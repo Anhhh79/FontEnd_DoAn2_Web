@@ -1,0 +1,51 @@
+.option::before {
+    content: "|";
+    width: 2px;
+    color: #ddd;
+}
+.Thongtinsan::before {
+    content: "|";
+    width: 4px;
+    color: #FFD88A;
+}
+.form-group {
+    border-radius: 8px;
+    border: 1px solid #142239;
+    background: #FFF;
+    height: 48px;
+    font-size: 16px;
+}
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    outline: 0;
+    border-color: black;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.form-control{
+    border-color: black;
+    font-size: 16px;
+    height: 48px;
+}
+
+.input::placeholder{
+    font-size: 16px;
+    color: black !important;
+}
+.giodat {
+    border-radius: 10px;
+    border: 1px solid #93B4FD ;
+    background-color: #DBE6FE;
+}
+.button-hour{
+    width: 82px; display: flex;
+    height: 40px; 
+    background-color: #142239;
+    border-radius: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.hower-giodat :hover{
+background-color: white;
+}
