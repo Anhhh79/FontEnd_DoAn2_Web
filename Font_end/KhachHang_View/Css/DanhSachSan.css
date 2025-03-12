@@ -1,4 +1,4 @@
-/* Hover shadow danh sách sânsân */
+/* Hover shadow danh sách sân */
 .card-hover:hover {
     box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.2) !important;
     transition: all 0.3s ease-in-out;

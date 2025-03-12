@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,38 +28,210 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
 
+    <!-- Thư viện để lấy tỉnh quận huyện -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+
     <!-- CSS -->
-     <link rel="stylesheet" href="Css/main.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/DanhSachSan.css">
+    <title>Hệ Thống Sân Bóng 4TL</title>
 </head>
+
+
 <body>
 
+    <!-- Button mở Modal -->
+    <button type="button" id="btnShow" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDangKy">
+        Đăng Ký
+    </button>
 
+    <!-- Modal đăng nhập -->
+    <div class="modal fade" id="modalDangNhap" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-end">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="modal-title fw-bold">ĐĂNG NHẬP</h5>
+                    </div>
+                    <div class="p-3">
+                        <div class="mt-3">
+                            <input type="text" class="form-control border-1 border-dark" placeholder="Nhập tài khoản" />
+                        </div>
+                        <div class="mt-3">
+                            <input type="password" class="form-control border-1 border-dark"
+                                placeholder="Nhập mật khẩu" />
+                        </div>
+                        <button class="btn w-100 text-light mt-4" style="background-color: rgb(20, 34, 56);">
+                            Đăng Nhập
+                        </button>
+                        <div class=" text-center mt-3">
+                            <span>Bạn chưa có tài khoản? <a href="#" class="fw-medium text-decoration-none"
+                                    data-bs-toggle="modal" data-bs-target="#modalDangKy" data-bs-dismiss="modal"
+                                    aria-label="Close">Đăng ký tài khoản</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal đăng ký -->
+    <div class="modal fade" id="modalDangKy" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-end">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="modal-title fw-bold">ĐĂNG KÝ</h5>
+                    </div>
+                    <div class="p-3">
+                        <div class="row">
+                            <div class="col-6 mt-3">
+                                <input type="text" class="form-control border-1 border-dark"
+                                    placeholder="Nhập họ và tên" />
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input type="text" class="form-control border-1 border-dark"
+                                    placeholder="Nhập số điện thoại" />
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input type="email" class="form-control border-1 border-dark"
+                                    placeholder="Nhập Email" />
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input type="email" class="form-control border-1 border-dark"
+                                    placeholder="Nhập tên sân bóng" />
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input type="password" class="form-control border-1 border-dark"
+                                    placeholder="Nhập mật khẩu" />
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input type="password" class="form-control border-1 border-dark"
+                                    placeholder="Xác nhận mật khẩu" />
+                            </div>
+                            <div class="col-6 mt-3 mb-2">
+                                <select id="diaChiTinh" class="select2 form-select border-1 border-dark">
+                                    <!-- code vao day -->
+                                </select>
+                            </div>
+                            <div class="col-6 mt-3 mb-2">
+                                <select id="diaChiHuyen" class="select2 form-select border-1 border-dark">
+                                    <!-- code vao day -->
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn w-100 text-light mt-4" style="background-color: rgb(20, 34, 56);">
+                            Đăng Ký
+                        </button>
+                        <div class="mt-3 text-center">
+                            <span>Bạn đã có tài khoản? <a id="chuyenHuong" href="#"
+                                    class="fw-medium text-decoration-none" data-bs-toggle="modal"
+                                    data-bs-target="#modalDangNhap" data-bs-dismiss="modal" aria-label="Close">Đăng
+                                    Nhập</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Danh sách sân-->
+    <section id="danhSachSanBong">
+        <div class="m-5">
+            <div class="row">
+                <div class="col">
+                    <div class="pb-3">
+                        <h3 class=" fw-bolder">Danh sách sân</h3>
+                    </div>
+                    <div class="row d-flex" id="listSanBong">
+                        <!-- danh sách sân bóng bên js sẽ vào đây -->
+                    </div>
+                    <!-- Phân trang -->
+                    <nav class="mt-4 pb-5">
+                        <ul class="pagination justify-content-center" id="pagination">
+                            <!-- Nút chuyển trang sẽ được tạo động -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
 
+        </div>
+    </section>
 
-
-
-
-
-
-
-
+    <!-- Footer -->
+    <footer class="bg-dark py-4">
+        <div class="container">
+            <div class="row gy-3 mx-auto">
+                <div class="col-lg-4 col-sm-6 d-flex text-light gap-2 justify-content-center ">
+                    <i class="bi bi-geo-alt fs-5" style="color: red"></i>
+                    <div>
+                        <h4 class="mb-2">Address</h4>
+                        <p class="mb-0" style="height:25px">A108 Adam Street</p>
+                        <p>New York, NY 535022</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 d-flex text-light gap-2 justify-content-center ">
+                    <i class="bi bi-telephone fs-5" style="color: red"></i>
+                    <div>
+                        <h4 class="mb-2">Contact</h4>
+                        <p class="mb-0" style="height:25px"><span class="fw-bold">Phone: </span>035436623</p>
+                        <p><span class="fw-bold">Email: </span>4tl@gmail.com</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 d-flex text-light gap-2 justify-content-center">
+                    <i class="bi bi-clock fs-5" style="color: red"></i>
+                    <div>
+                        <h4 class="mb-2">Opening Hours</h4>
+                        <p class="mb-0" style="height:25px"><span class="fw-bold">Mon-Sat: </span>7AM - 22PM</p>
+                        <p><span class="fw-bold">Sunday: </span>Closed</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="text-light">
+        <div class="container copyright text-center text-light">
+            <p class="m-0" style="height:30px">© <span>Copyright</span> <strong class="px-1 sitename">3TL</strong>
+                <span>All Rights Reserved</span>
+            </p>
+            <div>
+                Designed by <a href="#" class="text-danger" style="text-decoration: none;">BaoAnh</a> Distributed by <a
+                    href="#" class="text-danger" style="text-decoration: none;">3TL_FootBall</a>
+            </div>
+        </div>
+    </footer>
     <!-- Boottrap js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
         integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- js file -->
-    <script src="js/main.js"></script>
+
     <!-- Jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- own Caroul js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Flatpick -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- select2 de chon tinh, huyen -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <!-- js file -->
+    <script src="js/main.js"></script>
+    <script src="js/danhSachSanBong.js"></script>
+
+
 </body>
+
 </html>
