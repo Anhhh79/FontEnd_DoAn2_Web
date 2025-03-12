@@ -35,6 +35,8 @@
 
 <body>
 
+    <div id="toast-container"></div>
+
     <div class="container-fluid" style="background-color: #F6F6F6;">
         <div class="mx-5 py-4">
             <!-- Phần Tên sân bóng + icon -->
@@ -140,324 +142,331 @@
                         Đặt sân theo yêu cầu
                     </div>
                     <div>
-                        <input type="text" style="border-radius: 10px;" class="form-control mt-3 p-2" aria-label=""
-                            placeholder="Họ và tên">
+                        <input type="text" id="hoten" style="border-radius: 10px;" class="form-control mt-3 p-2"
+                            aria-label="" placeholder="Họ và tên">
+                        <span id="error-hoten" class="text-error text-danger"></span>
                     </div>
                     <div>
-                        <input type="text" style="border-radius: 10px;" class="form-control mt-3 p-2" aria-label=""
-                            placeholder="Email">
+                        <input type="text" id="email" style="border-radius: 10px;" class="form-control mt-3 p-2"
+                            aria-label="" placeholder="Email">
+                        <span id="error-email" class="text-error text-danger"></span>
                     </div>
                     <div>
-                        <input type="text" style="border-radius: 10px;" class="form-control mt-3 p-2" aria-label=""
-                            placeholder="Số điện thoại">
+                        <input type="text" id="sdt" style="border-radius: 10px;" class="form-control mt-3 p-2"
+                            aria-label="" placeholder="Số điện thoại">
+                        <span id="error-sdt" class="text-error text-danger"></span>
                     </div>
                     <div>
                         <input class="p-2 mt-3 form-control" id="myID" class="ps-2"
                             style="border-radius: 10px;background-color: white;" placeholder="Ngày Nhận">
+                        <span id="error-ngaynhan" class="text-error text-danger"></span>
                     </div>
                     <div>
                         <textarea id="moTa" class="p-2 mt-3 form-control" style="border-radius: 10px;height: 80px;"
                             name="moTa" rows="4" cols="60" placeholder="Nhập mô tả ở đây..."></textarea>
                     </div>
                     <div>
-                        <select class="form-select form-control mt-3" style="border-radius: 10px;" required>
-                            <option value="">Chọn giờ</option>
-                            <option value="Nam">1 giờ</option>
-                            <option value="Nữ">1.5 giờ</option>
+                        <select id="timeSelect" class="form-select form-control mt-3" style="border-radius: 10px;"
+                            required>
+                            <option value="1">1 giờ</option>
+                            <option value="1.5">1.5 giờ</option>
                         </select>
                     </div>
                     <div class="d-flex mt-3">
-                        <div style="font-weight: 700;"> Giờ đặt: </div> <div style="font-weight: 700;" class="ms-2">  19:00 - 20:00</div>
+                        <div style="font-weight: 700;"> Giờ đặt: </div>
+                        <div style="font-weight: 700;" class="ms-2"> 19:00 - 20:00</div>
                     </div>
                     <div>
-                        <button type="button" style="width: 100%;height: 48px;border-radius: 10px;"
+                        <button type="button" id="btnDatSan" style="width: 100%;height: 48px;border-radius: 10px;"
                             class="btn btn-success mt-3">Đặt Sân</button>
                     </div>
                 </div>
                 <div class="col-9">
                     <div class="row ms-3 p-3" style="background-color: white; border-radius: 10px;">
-                         <!-- Phần đặt sân 1.5 giờ -->
-                        <div class="row p-2">
-                            <div class="ms-2 button-hour">
-                                <div style="color: white;"> Sân 5 </div>
+                        <!-- Phần đặt sân 1 giờ -->
+                        <div class="row hour-section" id="oneHour">
+                            <div class="row p-2">
+                                <div class="ms-2 button-hour">
+                                    <div style="color: white;"> Sân 5 </div>
+                                </div>
+
+                                <div class="ms-2 button-hour">
+                                    <div style="color: white;"> 1 giờ </div>
+                                </div>
+                            </div>
+                            <div class="col-3 hower-giodat  p-1">
+                                <div class="giodat  p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        5:00 - 6:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="ms-2 button-hour">
-                                <div style="color: white;"> 1 giờ </div>
-                            </div>
-                        </div>
-                        <div class="col-3 hower-giodat  p-1">
-                            <div class="giodat  p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    5:00 - 6:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat  p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        6:00 - 7:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat  p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    6:00 - 7:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        7:00 - 8:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    7:00 - 8:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        8:00 - 9:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    8:00 - 9:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        9:00 - 10:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        11:00 - 12:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    9:00 - 10:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    11:00 - 12:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        13:00 - 14:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    13:00 - 14:00
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        15:00 - 16:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        17:00 - 18:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        19:00 - 20:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        21:00 - 22:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        23:00 - 00:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    15:00 - 16:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    17:00 - 18:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    19:00 - 20:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    21:00 - 22:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    23:00 - 00:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Phần đặt sân 1.5 giờ -->
-                        <div class="row p-2">
-                            <div class="ms-2 button-hour">
-                                <div style="color: white;"> Sân 5 </div>
+                        <div class="row hour-section" id="onePointFiveHour">
+                            <div class="row p-2">
+                                <div class="ms-2 button-hour">
+                                    <div style="color: white;"> Sân 5 </div>
+                                </div>
+
+                                <div class="ms-2 button-hour">
+                                    <div style="color: white;"> 1.5 giờ </div>
+                                </div>
+                            </div>
+                            <div class="col-3 hower-giodat  p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        5:00 - 6:30
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="ms-2 button-hour">
-                                <div style="color: white;"> 1.5 giờ </div>
-                            </div>
-                        </div>
-                        <div class="col-3 hower-giodat  p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    5:00 - 6:30
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat  p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        6:30 - 8:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat  p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    6:30 - 8:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        8:00 - 9:30
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    8:00 - 9:30
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        9:30 - 11:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    9:30 - 11:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        11:00 - 12:30
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        12:30 - 14:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    11:00 - 12:30
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    12:30 - 14:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        14:00 - 15:30
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    14:00 - 15:30
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        15:30 - 17:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        17:00 - 18:30
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        18:30 - 20:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        20:00 - 21:30
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 hower-giodat p-1">
+                                <div class="giodat p-2 d-flex flex-column justify-content-center">
+                                    <div class="d-flex justify-content-center" style="font-weight: 700;">
+                                        21:30 - 23:00
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        300k
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    15:30 - 17:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    17:00 - 18:30
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    18:30 - 20:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    20:00 - 21:30
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 hower-giodat p-1">
-                            <div class="giodat p-2 d-flex flex-column justify-content-center">
-                                <div class="d-flex justify-content-center" style="font-weight: 700;">
-                                    21:30 - 23:00
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    300k
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -469,28 +478,95 @@
         <div class="mx-5 py-4">
             <div class="row">
                 <div class="col-6">
-                    Kết nối với thế giới thể thao
+                    <div style="font-size: xX-large; font-weight: 700"> Kết nối với thế giới thể thao </div>
+                    <div class="container mt-4">
+                        <ul class="nav nav-tabs" id="locationTabs" style="font-size: large; font-weight: 600;">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#cantho">Cần Thơ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#hochiminh">Hồ Chí Minh</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#kienggiang">Kiêng Giang</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#soctrang">Sóc Trăng</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content pt-3" style="background-color: #FAFAFA;">
+                            <div class="tab-pane fade show active px-3 pb-3" id="cantho">
+                                <h5><b>Cần Thơ</b></h5>
+                                <p class="size-gg"><i class="fa-solid fa-map-location-dot me-2"></i> 197 Trần Bạch Đằng
+                                    - An Khánh - Ninh Kiều - Cần Thơ (<a href="#" class="text-danger">Google
+                                        Map</a>)</p>
+                                <p class="size-gg"><i class="fa-solid fa-phone me-2"></i> Điện thoại: <span
+                                        class="text-danger">0904.79.5885</span></p>
+                                <p class="size-gg"><i class="fa-solid fa-envelope me-2"></i> Mail: <a
+                                        href="mailto:phamtan@thegioithethao.vn"
+                                        class="text-danger">huynhquocbao@gmail.com</a></p>
+                                <p class="size-gg"><i class="fa-solid fa-phone-volume me-2"></i> Hotline (Zalo): <span
+                                        class="text-danger">0904.795.885</span></p>
+                            </div>
+
+                            <div class="tab-pane fade px-3 pb-3" id="hochiminh">
+                                <h5><b>Hồ Chí Minh</b></h5>
+                                <p class="size-gg"><i class="fa-solid fa-map-location-dot me-2"></i> Địa chỉ Hồ Chí Minh
+                                    (<a href="#" class="text-danger">Google Map</a>)</p>
+                                <p class="size-gg"><i class="fa-solid fa-phone me-2"></i> Điện thoại: <span
+                                        class="text-danger">0123.45.6789</span></p>
+                                <p class="size-gg"><i class="fa-solid fa-envelope me-2"></i> Mail: <a
+                                        href="mailto:hcm@thegioithethao.vn"
+                                        class="text-danger">hcm@thegioithethao.vn</a></p>
+                                <p class="size-gg"><i class="fa-solid fa-phone-volume me-2"></i> Hotline (Zalo): <span
+                                        class="text-danger">0123.456.789</span></p>
+                            </div>
+
+                            <div class="tab-pane fade px-3 pb-3" id="kienggiang">
+                                <h5><b>kiêng Giang</b></h5>
+                                <p class="size-gg"><i class="fa-solid fa-map-location-dot me-2"></i> Địa chỉ Đà Nẵng (<a
+                                        href="#" class="text-danger">Google Map</a>)</p>
+                                <p class="size-gg"><i class="fa-solid fa-phone me-2"></i> Điện thoại: <span
+                                        class="text-danger">0987.65.4321</span></p>
+                                <p class="size-gg"><i class="fa-solid fa-envelope me-2"></i> Mail: <a
+                                        href="mailto:danang@thegioithethao.vn"
+                                        class="text-danger">danang@thegioithethao.vn</a></p>
+                                <p class="size-gg"><i class="fa-solid fa-phone-volume me-2"></i> Hotline (Zalo): <span
+                                        class="text-danger">0987.654.321</span></p>
+                            </div>
+
+                            <div class="tab-pane fade px-3 pb-3" id="soctrang">
+                                <h5><b>Sóc Trăng</b></h5>
+                                <p class="size-gg"><i class="fa-solid fa-map-location-dot me-2"></i> Địa chỉ Hải Dương
+                                    (<a href="#" class="text-danger">Google Map</a>)</p>
+                                <p class="size-gg"><i class="fa-solid fa-phone me-2"></i> Điện thoại: <span
+                                        class="text-danger">0912.34.5678</span></p>
+                                <p class="size-gg"><i class="fa-solid fa-envelope me-2"></i> Mail: <a
+                                        href="mailto:haiduong@thegioithethao.vn"
+                                        class="text-danger">haiduong@thegioithethao.vn</a></p>
+                                <p class="size-gg"><i class="fa-solid fa-phone-volume me-2"></i> Hotline (Zalo): <span
+                                        class="text-danger">0912.345.678</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.344990240496!2d105.74941417479414!3d10.038667390068717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a089a99a606f21%3A0xa73db9e3a500c454!2zU8OibiBCw7NuZyDEkOG6oWkgSOG7jWMgWSBExrDhu6Nj!5e1!3m2!1svi!2s!4v1741789239904!5m2!1svi!2s"
+                        width="100%" height="350px" style="border:0;border-radius: 10px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
-     </div>
-
-
-
-
-
-
-
-
-
-
+    </div>
 
     <!-- Boottrap js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
         integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- js file -->
-    <script src="js/main.js"></script>
+    <script src="js/DatSan.js"></script>
     <!-- Jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
