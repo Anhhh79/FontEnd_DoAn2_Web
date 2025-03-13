@@ -11,3 +11,15 @@
 .img-hover:hover {
     transform: scale(0.98);
 }
+
+.input-error {
+    border: 1px solid red !important;
+    background-color: #ffcccc !important; /* Màu nền đỏ nhạt */
+    transition: all 0.3s ease-in-out;
+}
+
+.input-error:focus {
+    outline: none; /* Xóa viền xanh mặc định khi focus */
+    background-color: #ffdddd !important; /* Đổi màu nhẹ hơn khi focus */
+}
+

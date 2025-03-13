@@ -17,8 +17,18 @@ function clearPhoneNumberDanhGia() {
     const NumberInput = document.getElementById('PhoneNumberAssess');
     NumberInput.value = '';
 }
-//Kiem tra nhap thong tin trong chuc nang danh gia
 
+//Reset thong bao lỗi
+function resetError(){
+    const fullNameError = document.getElementById('fullNameError'); // Phần tử thông báo lỗi cho họ tên
+    const phoneNumberError = document.getElementById('phoneNumberError'); // Phần tử thông báo lỗi cho số điện thoại
+    const starRatingError = document.getElementById('starRatingError'); // Phần tử thông báo lỗi cho đánh giá sao
+
+    fullNameError.textContent = '';
+    phoneNumberError.textContent = '';
+    starRatingError.textContent = '';
+}
+//Kiem tra nhap thong tin trong chuc nang danh gia
 function validateAssessmentForm() {
     // Lấy giá trị của họ tên
     const fullName = document.getElementById('fullNameAssess').value.trim();
@@ -36,9 +46,7 @@ function validateAssessmentForm() {
     const phoneRegex = /^[0-9]{10}$/;
 
     // Reset các thông báo lỗi trước khi kiểm tra
-    fullNameError.textContent = '';
-    phoneNumberError.textContent = '';
-    starRatingError.textContent = '';
+    resetError();
 
     // Biến cờ để theo dõi trạng thái hợp lệ của form
     let isValid = true;
@@ -65,7 +73,7 @@ function validateAssessmentForm() {
         return false;
     }
 
-    ThemDanhGia();
+    // ThemDanhGia();
     return true;
 }
 
