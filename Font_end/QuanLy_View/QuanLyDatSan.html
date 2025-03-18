@@ -29,12 +29,46 @@
     <main class="content px-3 py-3">
         <div class="container-fluid">
             <div>
-                <div class="input-group d-flex align-items-center border border-dark rounded"
-                    style="width: 300px;padding: 0;">
-                    <i class="fa-solid fa-magnifying-glass fa-1x ms-2 "></i>
-                    <input type="text" class="form-control input-border" placeholder="Thông tin sân"
-                        aria-label="Username" aria-describedby="basic-addon1" style="border: 0;">
+                <div class="row g-2">
+                    <!-- Ô tìm kiếm sân -->
+                    <div class="col-md-3">
+                        <div class="input-group border border-dark rounded-2">
+                            <span class="input-group-text bg-white border-0">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <input type="text" class="form-control border-0" placeholder="Thông tin sân">
+                        </div>
+                    </div>
+                    <!-- Ô chọn ngày -->
+                    <div class="col-md-3">
+                                                <div class="input-group">
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    <!-- Ô chọn thời lượng -->
+                    <div class="col-md-3">
+                        
+                        <select class="form-select" id="selectThoiLuong">
+                            <option selected>Chọn thời lượng</option>
+                            <option value="1h">1 giờ</option>
+                            <option value="1.5h">1.5 giờ</option>
+                            <option value="2h">2 giờ</option>
+                        </select>
+                    </div>
+                    <!-- Ô chọn giờ nhận sân -->
+                    <div class="col-md-3">
+                        <select class="form-select" id="selectGio">
+                            <option selected>Chọn giờ nhận</option>
+                            <option value="08:00">08:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
                 </div>
+                
                 <div class="row mt-2">
                     <div class="col-12">
                         <table class="table">
@@ -148,7 +182,8 @@
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-center mt-4 mb-2">
-                                    <button type="button" class="btn btn-success w-50" id="btnDatSanTrong">Đặt sân</button>
+                                    <button type="button" class="btn btn-success w-50" id="btnDatSanTrong">Đặt
+                                        sân</button>
                                 </div>
                             </div>
                         </div>
@@ -198,9 +233,9 @@
                                         <span class="error text-danger" id="ngayNhanDaDatError"></span>
                                     </div>
                                     <div class="col-4">
-                                            <h6><span style="font-weight: 600;">Thời lượng:</span></h6>
-                                            <input type="text" class="form-control" id="thoiLuongDaDat" readonly>
-                                            <span class="error text-danger" id="thoiLuongDaDatError"></span>
+                                        <h6><span style="font-weight: 600;">Thời lượng:</span></h6>
+                                        <input type="text" class="form-control" id="thoiLuongDaDat" readonly>
+                                        <span class="error text-danger" id="thoiLuongDaDatError"></span>
                                         <span class="error text-danger" id="thoiLuongDaDatError"></span>
                                     </div>
                                     <div class="col-4">
