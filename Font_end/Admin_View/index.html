@@ -38,49 +38,10 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" onclick="loadContent('QuanLySan.html')">
+                    <a href="#" class="sidebar-link">
                         <i class="lni lni-user"></i>
-                        <span>Quản lý sân</span>
+                        <span>Quản lý tài khoản</span>
                     </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" onclick="loadContent('QuanLyDatSan.html')">
-                        <i class="lni lni-agenda"></i>
-                        <span>Quản lý đặt sân</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link"onclick="loadContent('XacNhanDatSan.html')">
-                        <i class="lni lni-protection"></i>
-                        <span>Xác nhận đặt sân</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" onclick="loadContent('DangThongTinSan.html')">
-                        <i class="lni lni-layout"></i>
-                        <span>Đăng thông tin sân</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" onclick="loadContent('QuanLyKhachHang.html')">
-                        <i class="lni lni-popup"></i>
-                        <span>Quản lý khách hàng</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="lni lni-agenda"></i>
-                        <span>Quản lý doanh thu</span>
-                    </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" onclick="loadContent('HoaDon.html')">Hóa đơn</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" onclick="loadContent('ThongKe.html')">Thống kê</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -95,7 +56,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav justify-content-between" style="width: 1380px;">
                         <li>
-                            <h2 style="font-weight: bolder;">Thông tin nhân viên</h2>
+                            <h2 style="font-weight: bolder;">Thông tin chủ sân</h2>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
@@ -107,8 +68,7 @@
                                     </h4>
                                 </div>
                                 <div class="d-flex">
-                                    <a class="ms-2 cusor" data-bs-toggle="modal" data-bs-target="#doimk">Đổi mật
-                                        khẩu</a>
+                                    <a class="ms-2 cusor" data-bs-toggle="modal" data-bs-target="#doimk">Đổi mật khẩu</a>
                                 </div>
                                 <div class="d-flex">
                                     <a class="ms-2 cusor" style="color: red;">Đăng xuất</a>
@@ -121,72 +81,41 @@
             <main class="content px-3 py-3">
                 <div class="container-fluid">
                     <div>
+        
                         <div class="row justify-content-between mx-1 mb-4">
                             <div class="input-group d-flex align-items-center border border-dark rounded"
                                 style="width: 300px;padding: 0;">
                                 <i class="fa-solid fa-magnifying-glass fa-1x ms-2 "></i>
-                                <input type="text" class="form-control input-border" placeholder="Thông tin nhân viên"
+                                <input type="text" class="form-control input-border" placeholder="Thông tin khách hàng"
                                     aria-label="Username" aria-describedby="basic-addon1" style="border: 0;">
                             </div>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#them"
-                                data-bs-dismiss="modal" style="width: 135px; font-size: small;">Thêm nhân
-                                viên</button>
                         </div>
+        
                         <div class="row mt-2">
                             <div class="col-12">
                                 <table class="table">
                                     <thead style="background: #0e2238;">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Căn cước công dân</th>
                                             <th scope="col">Họ và tên</th>
-                                            <th scope="col">Giới tính</th>
+                                            <th scope="col">Tên sân bóng</th>
                                             <th scope="col">Số điện thoại</th>
-                                            <th scope="col">Chức vụ</th>
-                                            <th scope="col">Địa chỉ</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col"></th>
+        
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="row-item">
+                                        <tr>
                                             <th scope="row">1</th>
-                                            <td class="me-2">0928383992</td>
                                             <td>Huỳnh Quốc Bảo</td>
-                                            <td>Nam</td>
-                                            <td>090013332</td>
-                                            <td>Quản lý</td>
-                                            <td>Cần Thơ</td>
-                                            <td class="d-flex  justify-content-end">
-                                                <a class="cusor me-2 mt-1" data-bs-toggle="modal"
-                                                    data-bs-target="#chitiet"
+                                            <td>Sân An Khánh</td>
+                                            <td>0376248323</td>
+                                            <td>QuocBao@gmail.com</td>
+                                            <td> <a class="cusor me-2 mt-1 d-flex justify-content-end" data-bs-toggle="modal"
+                                                    data-bs-target="#Thongtin1"
                                                     style="color: darkblue; font-style: italic; text-decoration: underline;">Chi
-                                                    tiết</a>
-                                                <button type="button" class="btn btn-warning me-2 edit-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#suaModal"
-                                                    style="font-size: small;">Sửa</button>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size: small;">Xóa</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="row-item">
-                                            <th scope="row">1</th>
-                                            <td class="me-2">0938282</td>
-                                            <td>Huỳnh Quốc Bảo 1</td>
-                                            <td>Nam</td>
-                                            <td>090013332</td>
-                                            <td>Quản lý</td>
-                                            <td>Cần Thơ</td>
-                                            <td class="d-flex  justify-content-end">
-                                                <a class="cusor me-2 mt-1" data-bs-toggle="modal"
-                                                    data-bs-target="#chitiet"
-                                                    style="color: darkblue; font-style: italic; text-decoration: underline;">Chi
-                                                    tiết</a>
-                                                <button type="button" class="btn btn-warning me-2 edit-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#suaModal"
-                                                    style="font-size: small;">Sửa</button>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size: small;">Xóa</button>
-                                            </td>
+                                                    tiết</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -195,6 +124,53 @@
                     </div>
                 </div>
             </main>
+        
+            <!-- modal chi tiết -->
+            <div class="modal fade" id="Thongtin1" tabindex="-1" aria-labelledby="chitiet" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="border-radius: 20px">
+                        <div class="modal-header d-flex justify-content-center">
+                            <div>
+                                <h5 style="font-weight: bolder;">Thông tin chủ sân</h5>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 px-0">
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <div class="col-4">
+                                                    <h6> <span style="font-weight: 600;">Họ
+                                                            tên: </span>Huỳnh Quốc Bảo</h6>
+                                                </div>
+                                                <div class="col-4">
+                                                    <h6><span style="font-weight: 600;">Số
+                                                            điện thoại:</span> 012345678
+                                                    </h6>
+                                                </div>
+                                                <div class="col-4">
+                                                    <h6> <span style="font-weight: 600;">Tên sân bóng: </span>An Khánh</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-4">
+                                                    <h6><span style="font-weight: 600;">Email:</span>
+                                                        Quocbao@gmail.com</h6>
+                                                </div>
+                                                <div class="col-8">
+                                                    <h6><span style="font-weight: 600;">Địa chỉ: </span>33 Nguyễn Đệ, An Hòa, Ninh Kiều, Cần Thơ</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -26,7 +26,7 @@
             </div>
         </div>
     </nav>
-    
+
     <main class="content px-3 py-3">
         <div class="container-fluid">
             <div>
@@ -42,7 +42,7 @@
                             data-bs-target="#them" data-bs-dismiss="modal">Thêm sân</button>
                     </div>
                 </div>
-    
+
                 <div class="row mt-2">
                     <div class="col-12">
                         <div class="table-responsive">
@@ -65,7 +65,7 @@
                                         <td class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal"
                                                 data-bs-target="#sua" data-bs-dismiss="modal">Sửa</button>
-                                            <button type="button" class="btn btn-danger">Xóa</button>
+                                            <button type="button" class="btn btn-danger" onclick="HienThiThongBaoXoa()">Xóa</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -76,7 +76,7 @@
             </div>
         </div>
     </main>
-    
+
     <!-- Modal đổi mk -->
     <div class="modal fade" id="doimk" tabindex="-1" aria-labelledby="moimk" aria-hidden="true">
         <div class="modal-dialog">
@@ -142,9 +142,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <label for="tenHangPhong" class="ms-1 mb-1 label-modal">Tên sân</label>
-                                <input type="text" id="tenHangPhong" class="form-control" placeholder="">
-                                <span id="errorTenHangPhong" class="text-danger"></span>
+                                <label for="tenSan" class="ms-1 mb-1 label-modal">Tên sân</label>
+                                <input type="text" id="tenSan" class="form-control" placeholder="">
+                                <span id="errortenSan" class="text-danger"></span>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="gia" class="ms-1 mb-1 label-modal">Giá</label>
@@ -155,12 +155,12 @@
                         <div class="row mt-3">
                             <div class="col-12 col-md-6">
                                 <label class="mb-1 ms-1 label-modal">Loại sân</label>
-                                <select class="form-select" id="gender" required>
+                                <select class="form-select" id="LoaiSan" required>
                                     <option value="">Chọn loại sân</option>
-                                    <option value="Nam">Sân 5</option>
-                                    <option value="Nữ">Sân 7</option>
+                                    <option value="5">Sân 5</option>
+                                    <option value="7">Sân 7</option>
                                 </select>
-                                <span class="error text-danger" id="genderError"></span>
+                                <span class="error text-danger" id="ErrorLoaiSan"></span>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="mb-1 ms-1 label-modal">Ảnh</label>
@@ -174,7 +174,7 @@
                         <div class="row" style="justify-content: flex-end;">
                             <div class="col-12 col-md-3 m-2 d-flex justify-content-end">
                                 <button type="button" id="btnThem" class="btn btn-success w-100 w-md-auto"
-                                    style="font-size: small;">
+                                    style="font-size: small;" onclick="KiemTraLoi()">
                                     Thêm sân
                                 </button>
                             </div>
@@ -200,9 +200,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <label for="EdittenHangPhong" class="ms-1 mb-1 label-modal">Tên sân</label>
-                                <input type="text" id="EdittenHangPhong" class="form-control" placeholder="">
-                                <span id="EditerrorTenHangPhong" class="text-danger"></span>
+                                <label for="EdittenSan" class="ms-1 mb-1 label-modal">Tên sân</label>
+                                <input type="text" id="EdittenSan" class="form-control" placeholder="">
+                                <span id="EditerrorTenSan" class="text-danger"></span>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="Editgia" class="ms-1 mb-1 label-modal">Giá</label>
@@ -213,12 +213,12 @@
                         <div class="row mt-3">
                             <div class="col-12 col-md-6">
                                 <label class="mb-1 ms-1 label-modal">Loại sân</label>
-                                <select class="form-select" id="gender" required>
+                                <select class="form-select" id="EditloaiSan" required>
                                     <option value="">Chọn loại sân</option>
-                                    <option value="Nam">Sân 5</option>
-                                    <option value="Nữ">Sân 7</option>
+                                    <option value="5">Sân 5</option>
+                                    <option value="7">Sân 7</option>
                                 </select>
-                                <span class="error text-danger" id="genderError"></span>
+                                <span class="error text-danger" id="EditErrorLoaiSan"></span>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="mb-1 ms-1 label-modal">Ảnh</label>
@@ -233,7 +233,7 @@
                     <div class="row justify-content-end">
                         <div class="col-12 col-md-3 m-2 d-flex justify-content-end">
                             <button type="button" id="btnSua" class="btn btn-success w-100 w-md-auto"
-                                style="font-size: small;">
+                                style="font-size: small;" onclick="KiemTraLoiSua()">
                                 Đồng ý
                             </button>
                         </div>
@@ -242,5 +242,33 @@
             </div>
         </div>
     </div>
+    <script>
+        // Xóa thông báo lỗi khi người dùng nhập lại
+        document.getElementById("tenSan").addEventListener("input", function () {
+            document.getElementById("errortenSan").textContent = "";
+        });
+        document.getElementById("gia").addEventListener("input", function () {
+            document.getElementById("errorGia").textContent = "";
+        });
+        document.getElementById("LoaiSan").addEventListener("change", function () {
+            document.getElementById("ErrorLoaiSan").textContent = "";
+        });
+        document.getElementById("imageInput").addEventListener("change", function () {
+            document.getElementById("errorImage").textContent = "";
+        });
 
+        // Xóa thông báo lỗi khi người dùng nhập lại
+        document.getElementById("EdittenSan").addEventListener("input", function () {
+            document.getElementById("EditerrorTenSan").textContent = "";
+        });
+        document.getElementById("Editgia").addEventListener("input", function () {
+            document.getElementById("EditerrorGia").textContent = "";
+        });
+        document.getElementById("EditloaiSan").addEventListener("change", function () {
+            document.getElementById("EditErrorLoaiSan").textContent = "";
+        });
+        document.getElementById("EditimageInput").addEventListener("change", function () {
+            document.getElementById("EditerrorImage").textContent = "";
+        });
+    </script>
 </div>
