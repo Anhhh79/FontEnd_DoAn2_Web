@@ -40,7 +40,7 @@ function displaySanBong(page = currentPage){
                                     alt="Ảnh sân bóng">
                                 <div class="card-body px-0 pb-1">
                                     <h6 class="card-title fw-bold pb-2">${san.name}</h6>
-                                    <p class="card-text m-0">Khu vực: <span>Xuân Khánh - Cần Thơ </span><br>Số sân:
+                                    <p class="card-text m-0"> <span class="fw-bold">Khu vực:</span> <span>Xuân Khánh - Cần Thơ </span><br>Số sân:
                                         <span>10</span>
                                     </p>
                                     <div>Sân trống: <a class="btn btn-outline-primary btn-sm mx-2"><span>15 :
