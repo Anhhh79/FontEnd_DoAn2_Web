@@ -205,3 +205,10 @@ input[type=number] {
     height: 400px;
     margin-bottom: 30px;
 }
+.bg-color {
+    background-color: white;
+    border-radius: 10px;
+}
+.bg-img{
+    background-color: white;
+}

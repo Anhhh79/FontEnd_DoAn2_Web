@@ -33,7 +33,7 @@
                     <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a href="#">3TL HOTEL</a>
+                    <a href="#">3TL FOOTBALL</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
@@ -68,10 +68,19 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" onclick="loadContent('QuanLyDoanhThu.html')">
-                        <i class="lni lni-cog"></i>
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-agenda"></i>
                         <span>Quản lý doanh thu</span>
                     </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link" onclick="loadContent('HoaDon.html')">Hóa đơn</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link" onclick="loadContent('ThongKe.html')">Thống kê</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -463,286 +472,6 @@
                 </div>
             </div>
 
-
-            <!-- javascrit bắt lỗi đổi mk -->
-            <script>
-                // Loại bỏ khoảng trắng trong khi người dùng nhập vào các ô mật khẩu
-                document.getElementById('mkHienTai').addEventListener('input', function () {
-                    this.value = this.value.replace(/\s/g, '');
-                });
-
-                document.getElementById('mkMoi').addEventListener('input', function () {
-                    this.value = this.value.replace(/\s/g, '');
-                });
-
-                document.getElementById('mkMoi1').addEventListener('input', function () {
-                    this.value = this.value.replace(/\s/g, '');
-                });
-
-                document.getElementById('doimatkhau').addEventListener('click', function () {
-                    // Lấy giá trị của các ô input
-                    const mkHienTai = document.getElementById('mkHienTai').value.trim();
-                    const mkMoi = document.getElementById('mkMoi').value.trim();
-                    const mkMoi1 = document.getElementById('mkMoi1').value.trim();
-
-                    // Xóa thông báo lỗi trước đó
-                    document.getElementById('mkHienTaiError').textContent = '';
-                    document.getElementById('mkMoiError').textContent = '';
-                    document.getElementById('mkMoi1Error').textContent = '';
-
-                    let isValid = true;
-
-                    // Kiểm tra mật khẩu hiện tại
-                    if (!mkHienTai) {
-                        document.getElementById('mkHienTaiError').textContent = 'Vui lòng nhập mật khẩu hiện tại';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra mật khẩu mới
-                    if (!mkMoi) {
-                        document.getElementById('mkMoiError').textContent = 'Vui lòng nhập mật khẩu mới';
-                        isValid = false;
-                    } else if (mkMoi.length < 6) {
-                        document.getElementById('mkMoiError').textContent = 'Mật khẩu mới phải có ít nhất 6 ký tự';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra nhập lại mật khẩu mới
-                    if (!mkMoi1) {
-                        document.getElementById('mkMoi1Error').textContent = 'Vui lòng nhập lại mật khẩu mới';
-                        isValid = false;
-                    } else if (mkMoi !== mkMoi1) {
-                        document.getElementById('mkMoi1Error').textContent = 'Mật khẩu nhập lại không khớp';
-                        isValid = false;
-                    }
-
-                    // Nếu không có lỗi, thực hiện các bước tiếp theo (ví dụ: gửi dữ liệu đến server)
-                    if (isValid) {
-                        // Thực hiện xử lý đổi mật khẩu tại đây
-                        alert('Đổi mật khẩu thành công!');
-                        document.getElementById('mkHienTai').value = '';
-                        document.getElementById('mkMoi').value = '';
-                        document.getElementById('mkMoi1').value = '';
-                    }
-                });
-
-            </script>
-
-            <!-- Javascript bắt lỗi sửa -->
-            <script>
-                document.getElementById('btnEdit').addEventListener('click', function (e) {
-                    // Ngăn form submit nếu có lỗi
-                    e.preventDefault();
-
-                    // Đặt biến để kiểm tra hợp lệ
-                    let isValid = true;
-
-                    // Reset các thông báo lỗi trước khi kiểm tra
-                    document.querySelectorAll('.error').forEach(function (el) {
-                        el.textContent = '';
-                    });
-
-                    // Biểu thức chính quy để kiểm tra ký tự đặc biệt
-                    const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
-
-                    // Kiểm tra Họ và Tên
-                    const fullname = document.getElementById('editFullname').value.trim();
-                    if (fullname === '') {
-                        document.getElementById('EditNameError').textContent = 'Họ và Tên không được để trống';
-                        isValid = false;
-                    } else if (specialCharPattern.test(fullname)) {
-                        document.getElementById('EditNameError').textContent = 'Họ và Tên không được chứa ký tự đặc biệt';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Giới tính
-                    const gender = document.getElementById('editGender').value;
-                    if (gender === '') {
-                        document.getElementById('EditgenderError').textContent = 'Vui lòng chọn giới tính';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Căn cước công dân (CCCD)
-                    const cccd = document.getElementById('editCCCD').value.trim();
-                    if (cccd === '') {
-                        document.getElementById('EditcccdError').textContent = 'Căn cước công dân không được để trống';
-                        isValid = false;
-                    } else if (!/^\d{12}$/.test(cccd)) {
-                        document.getElementById('EditcccdError').textContent = 'Căn cước công dân phải gồm 12 chữ số';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Số điện thoại
-                    const phone = document.getElementById('editPhone').value.trim();
-                    if (phone === '') {
-                        document.getElementById('EditphoneError').textContent = 'Số điện thoại không được để trống';
-                        isValid = false;
-                    } else if (!/^\d{10}$/.test(phone)) {
-                        document.getElementById('EditphoneError').textContent = 'Số điện thoại phải gồm 10 chữ số';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Chức vụ
-                    const position = document.getElementById('editPosition').value;
-                    if (position === '') {
-                        document.getElementById('EditpositionError').textContent = 'Vui lòng chọn chức vụ';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Địa chỉ
-                    const address = document.getElementById('editAddress').value.trim();
-                    if (address === '') {
-                        document.getElementById('EditaddressError').textContent = 'Địa chỉ không được để trống';
-                        isValid = false;
-                    } else if (specialCharPattern.test(address)) {
-                        document.getElementById('EditaddressError').textContent = 'Địa chỉ không được chứa ký tự đặc biệt';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Ảnh
-                    const imageInput = document.getElementById('imageInput');
-                    if (imageInput.files.length === 0) {
-                        document.getElementById('EditimageError').textContent = 'Vui lòng chọn ảnh';
-                        isValid = false;
-                    }
-
-                    // Nếu tất cả các trường đều hợp lệ, tiếp tục xử lý
-                    if (isValid) {
-                        alert("Bạn đã sửa thành công");
-
-                        // Làm sạch các trường nhập liệu
-                        document.getElementById('editFullname').value = '';
-                        document.getElementById('editGender').value = '';
-                        document.getElementById('editCCCD').value = '';
-                        document.getElementById('editPhone').value = '';
-                        document.getElementById('editPosition').value = '';
-                        document.getElementById('editAddress').value = '';
-                        imageInput.value = ''; // Xóa ảnh đã chọn
-                    } else {
-                        console.log('Có lỗi trong dữ liệu nhập vào.');
-                    }
-                });
-                // Xóa khoảng trắng cccd
-                document.getElementById('editCCCD').addEventListener('input', function () {
-                    this.value = this.value.replace(/^\s+|\s+$/g, '');
-                });
-
-                // Xóa khoảng trắng sdt
-                document.getElementById('editPhone').addEventListener('input', function () {
-                    this.value = this.value.replace(/^\s+|\s+$/g, '');
-                });
-            </script>
-
-            <!-- Javascript bắt lỗi thêm -->
-            <script>
-                document.querySelector('.addEmployee').addEventListener('click', function (e) {
-                    // Ngăn form submit nếu có lỗi
-                    e.preventDefault();
-
-                    // Đặt biến để kiểm tra hợp lệ
-                    let isValid = true;
-
-                    // Reset các thông báo lỗi trước khi kiểm tra
-                    document.querySelectorAll('.error').forEach(function (el) {
-                        el.textContent = '';
-                    });
-
-                    // Biểu thức chính quy để kiểm tra ký tự đặc biệt
-                    const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
-
-                    // Kiểm tra Họ và Tên
-                    const fullname = document.getElementById('fullname').value.trim();
-                    if (fullname === '') {
-                        document.getElementById('fullnameError').textContent = 'Họ và Tên không được để trống';
-                        isValid = false;
-                    } else if (specialCharPattern.test(fullname)) {
-                        document.getElementById('fullnameError').textContent = 'Họ và Tên không được chứa ký tự đặc biệt';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Giới tính
-                    const gender = document.getElementById('gender').value;
-                    if (gender === '') {
-                        document.getElementById('genderError').textContent = 'Vui lòng chọn giới tính';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Căn cước công dân (CCCD)
-                    const cccd = document.getElementById('cccd').value.trim();
-                    if (cccd === '') {
-                        document.getElementById('cccdError').textContent = 'Căn cước công dân không được để trống';
-                        isValid = false;
-                    } else if (!/^\d{12}$/.test(cccd)) {
-                        document.getElementById('cccdError').textContent = 'Căn cước công dân phải gồm 12 chữ số';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Số điện thoại
-                    const phone = document.getElementById('phone').value.trim();
-                    if (phone === '') {
-                        document.getElementById('phoneError').textContent = 'Số điện thoại không được để trống';
-                        isValid = false;
-                    } else if (!/^\d{10}$/.test(phone)) {
-                        document.getElementById('phoneError').textContent = 'Số điện thoại phải gồm 10 chữ số';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Chức vụ
-                    const position = document.getElementById('position').value;
-                    if (position === '') {
-                        document.getElementById('positionError').textContent = 'Vui lòng chọn chức vụ';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Địa chỉ
-                    const address = document.getElementById('address').value.trim();
-                    if (address === '') {
-                        document.getElementById('addressError').textContent = 'Địa chỉ không được để trống';
-                        isValid = false;
-                    } else if (specialCharPattern.test(address)) {
-                        document.getElementById('addressError').textContent = 'Địa chỉ không được chứa ký tự đặc biệt';
-                        isValid = false;
-                    }
-
-                    // Kiểm tra Ảnh
-                    const imageInput = document.getElementById('AddimageInput');
-                    if (imageInput.files.length === 0) {
-                        document.getElementById('imageError').textContent = 'Vui lòng chọn ảnh';
-                        isValid = false;
-                    }
-
-                    // Nếu tất cả các trường đều hợp lệ, tiếp tục xử lý
-                    if (isValid) {
-                        alert("Bạn đã thêm thành công");
-
-                        // Làm sạch các trường nhập liệu
-                        document.getElementById('fullname').value = '';
-                        document.getElementById('gender').value = '';
-                        document.getElementById('cccd').value = '';
-                        document.getElementById('phone').value = '';
-                        document.getElementById('position').value = '';
-                        document.getElementById('address').value = '';
-                        imageInput.value = ''; // Xóa ảnh đã chọn
-
-                        // Thực hiện các hành động tiếp theo, ví dụ như gửi form hoặc gọi API
-                        // document.getElementById('addForm').submit(); // Nếu có form
-                    } else {
-                        console.log('Có lỗi trong dữ liệu nhập vào.');
-                    }
-                });
-
-                // Xóa khoảng trắng cho các trường
-                document.getElementById('cccd').addEventListener('input', function () {
-                    this.value = this.value.replace(/^\s+|\s+$/g, '');
-                });
-
-                document.getElementById('phone').addEventListener('input', function () {
-                    this.value = this.value.replace(/^\s+|\s+$/g, '');
-                });
-
-
-            </script>
-
             <!-- javacript đưa dữ liệu từ table lên modal -->
             <script>
                 // Lắng nghe sự kiện khi modal Chỉnh sửa được mở
@@ -772,6 +501,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- file javascript -->
     <script src="Js/JS.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 </body>
 
 </html>
