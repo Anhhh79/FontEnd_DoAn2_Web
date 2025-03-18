@@ -83,3 +83,24 @@ document.addEventListener("DOMContentLoaded", function () {
     timeSelect.addEventListener("change", updateSelection);
     updateSelection(); // Chạy ngay khi tải trang để cập nhật trạng thái ban đầu
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const textElement = document.querySelector(".search-text");
+    const text = "Tìm sân thể thao";
+    let index = 0;
+
+    function typeEffect() {
+        if (index < text.length) {
+            textElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 200); // Hiển thị từng ký tự mỗi 200ms
+        } else {
+            setTimeout(() => {
+                textElement.textContent = "";
+                index = 0;
+                typeEffect(); // Lặp lại hiệu ứng
+            }, 2000); // Đợi 2 giây trước khi chạy lại từ đầu
+        }
+    }
+
+    typeEffect(); // Bắt đầu hiệu ứng
+});

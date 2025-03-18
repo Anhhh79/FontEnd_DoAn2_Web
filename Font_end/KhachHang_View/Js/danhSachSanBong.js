@@ -39,20 +39,27 @@ function displaySanBong(page = currentPage){
                                     class="card-img-top img-hover" style="border-radius: 10px !important;"
                                     alt="Ảnh sân bóng">
                                 <div class="card-body px-0 pb-1">
-                                    <h6 class="card-title fw-bold pb-2">${san.name}</h6>
-                                    <p class="card-text m-0"> <span class="fw-bold">Khu vực:</span> <span>Xuân Khánh - Cần Thơ </span><br>Số sân:
-                                        <span>10</span>
-                                    </p>
-                                    <div>Sân trống: <a class="btn btn-outline-primary btn-sm mx-2"><span>15 :
-                                                30</span></a> <a class="btn btn-sm btn-outline-primary me-2"><span>15 :
-                                                30</span></a> <button class="btn btn-outline-primary btn-sm"><span>15 :
-                                                30</span></button></div>
-                                    <div class="row d-flex pt-2">
-                                        <div class="col-6"><i class="bi bi-wifi"></i> Wifi</div>
-                                        <div class="col-6"><i class="bi bi-cup-hot"></i></i> Căng tin</div>
+                                    <span class="card-title fw-bold pb-2" style="font-size: large;">${san.name}</span>
+                                    <div class="card-text m-0 mt-1"> 
+                                      <div>
+                                        <span class="me-1">Khu vực:</span> <span>Xuân Khánh - Cần Thơ </span>
+                                      </div>
+                                      <div class="mt-1 mb-1">
+                                        <span class="me-1">Số sân:</span> <span>10</span>
+                                      </div>
+                                    </div>
+                                   <div>
+                                    <span class="me-1">Sân trống:</span>
+                                    <a class="btn btn-outline-primary btn-sm mx-2" style="border-radius: 10px;"><span>15 : 30</span></a> 
+                                    <a class="btn btn-sm btn-outline-primary me-2" style="border-radius: 10px;"style="border-radius: 10px;"><span>15 : 30</span></a>
+                                    <button class="btn btn-outline-primary btn-sm" style="border-radius: 10px;"><span>15 : 30</span></button>
+                                    </div>
+                                    <div class="row mt-1 fw-medium">
+                                      <div class="col-6"><i class="fa-solid fa-wifi me-2"></i>Wifi</div>
+                                      <div class="col-6"><i class="fa-solid fa-car me-2"></i> Bãi đỗ xe</div>
                                     </div>
                                     <a href="DatSan.html" class="btn btn-primary w-100 mt-3"
-                                        style="border-radius: 8px !important;">Đặt
+                                        style="border-radius: 10px !important;background-color: #0e2238; height:43px;">Đặt
                                         nhanh kẻo muộn</a>
                                 </div>
                             </div>

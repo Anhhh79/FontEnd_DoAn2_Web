@@ -22,7 +22,6 @@ font-size: 12px;
 }
 
 body {
-    /* font-family: 'Montserrat', sans-serif; */
     padding-top: 80px; /* Đảm bảo nội dung không bị che bởi header */
     
     background-color: #F6F6F6 
