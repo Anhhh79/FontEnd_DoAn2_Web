@@ -35,155 +35,13 @@
     <link rel="stylesheet" href="Css/main.css">
     <link rel="stylesheet" href="Css/DanhSachSan.css">
     <title>Hệ Thống Sân Bóng 4TL</title>
-    <style>
-      
-        
-      body {
-            font-family: 'Montserrat', sans-serif;
-            padding-top: 80px; /* Đảm bảo nội dung không bị che bởi header */
-            
-            background-color: #F6F6F6 
-
-        }
-
-        .navbar {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            
-        }
-
-        .navbar-brand img {
-            height: 40px;
-        }
-
-        .search-box {
-        position: relative;
-        max-width: 450px;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .search-text {
-        position: absolute;
-        top: 50%;
-        left: 15px;
-        transform: translateY(-50%);
-        font-size: 16px;
-        font-weight: 500;
-        color: gray;
-        white-space: nowrap;
-    }
-
-        .search-box input {
-            border-radius: 20px;
-            padding-right: 40px;
-        }
-
-        .search-box .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: gray;
-            cursor: pointer;
-           
-        }
-
-        .icon-box {
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .icon-box i {
-            font-size: 20px;
-            color: #333;
-        }
-
-        .icon-box span {
-            font-size: 12px;
-            font-weight: 500;
-            display: block;
-        }
-
-        .icon-box:hover i,
-        .icon-box:hover span {
-            color: #d9534f;
-        }
-
-        @media (max-width: 768px) {
-            .icon-box span {
-                display: none;
-            }
-        }
-        .search-container {
-            width: 100%;      /* Đảm bảo full chiều ngang */
-            max-width: 100%;  /* Giữ cho nó không bị thu nhỏ */
-            margin: 20px 0;
-        
-        }
-
-        .search-container form {
-            width: 100%; /* Đảm bảo form bên trong cũng mở rộng tối đa */
-            border-radius: 10px !important;/* Bo góc toàn bộ form */
-            overflow: hidden; /* Đảm bảo bo góc hiển thị đúng */
-        }
-        .banner {
-            position: relative;
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0; /* Thêm margin trên và dưới để tạo khoảng cách */
-            transition: transform 0.3s ease-in-out; /* Hiệu ứng hover */
-           
-        }
-
-        .banner img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            display: block;
-        }
-
-        .banner .text-content {
-            position: absolute;
-            top: 50%; /* Căn giữa theo chiều dọc */
-            left: 5%; /* Đẩy chữ về bên trái */
-            transform: translateY(-50%); /* Căn giữa chữ theo chiều dọc */
-            color: #d81b1b; /* Đổi màu chữ đỏ để nổi bật */
-            text-align: left;
-            font-weight: bold; /* Làm đậm chữ để nổi bật */
-            font-size: 1.5rem; /* Tăng kích thước chữ */
-        }
-
-        .banner:hover {
-            transform: scale(1.05); /* Phóng to nhẹ khi hover */
-        }
-
-
-
-
-        .highlight {
-            color: red;
-            font-weight: bold;
-        }
-
-        .btn-custom {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-        } 
-
-
-    </style>
 </head>
+
 <body>
-   <!-- Header -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top px-2">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand py-3" href="#">
                 <img src="https://img.thegioithethao.vn/media/logo/logo.svg" alt="Sport World">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -204,17 +62,17 @@
                 <div class="icon-box d-none d-md-block"><i class="bi bi-facebook"></i><span>Facebook</span></div>
                 <div class="icon-box d-none d-md-block"><i class="bi bi-youtube"></i><span>Youtube</span></div>
             </div>
-            
+
         </div>
     </nav>
-    
 
- <!-- Thanh tìm kiếm -->
-     <!-- Thanh tìm kiếm -->
-     <div class="container">
+
+    <!-- Thanh tìm kiếm -->
+    <!-- Thanh tìm kiếm -->
+    <div class="container">
         <div class="search-container">
             <form class="p-3 bg-white rounded shadow-sm">
-                <div class="row g-2">
+                <div class="row g-2 px-2">
                     <div class="col-md-4">
                         <select id="province" class="form-select">
                             <option value="">Chọn Tỉnh</option>
@@ -245,7 +103,7 @@
                 </div>
             </form>
         </div>
-    </div>  
+    </div>
     <div class="container my-4">
         <div class="row g-3">
             <!-- Banner 1 -->
@@ -271,10 +129,10 @@
             </div>
         </div>
     </div>
-    
 
-        
-    
+
+
+
 
     <!-- Button mở Modal -->
     <button type="button" id="btnShow" class="btn btn-primary" onclick="modalSignUp()">
