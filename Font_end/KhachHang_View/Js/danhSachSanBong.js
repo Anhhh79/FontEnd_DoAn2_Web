@@ -36,7 +36,7 @@ function displaySanBong(page = currentPage){
                             <div class="card p-2 border-0 shadow-lg h-100 card-hover"
                                 style="border-radius: 10px !important;">
                                 <img src="https://img.thegioithethao.vn/thumbs/san-bong-da/da-nang/ngu-hanh-son/san-bong-da-kaka-sport-khu-do-thi-hoa-quy/san-bong-sport-khu-do-thi-hoa-quy-1_thumb_500.webp"
-                                    class="card-img-top img-hover" style="border-radius: 8px !important;"
+                                    class="card-img-top img-hover" style="border-radius: 10px !important;"
                                     alt="Ảnh sân bóng">
                                 <div class="card-body px-0 pb-1">
                                     <h6 class="card-title fw-bold pb-2">${san.name}</h6>
