@@ -31,6 +31,10 @@
     <!-- Thư viện để lấy tỉnh quận huyện -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
 
+    <!--Thư viện thông báo đẹp-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="Css/main.css">
     <link rel="stylesheet" href="Css/DanhSachSan.css">
@@ -107,42 +111,63 @@
                             <div class="col-6 mt-3">
                                 <input type="text" class="form-control border-1 border-dark" id="phoneSignUp"
                                     placeholder="Nhập số điện thoại" />
-                                <span id="phoneSignUpError" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="phoneSignUpError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="email" class="form-control border-1 border-dark" id="emailSignUp"
                                     placeholder="Nhập Email" />
-                                <span id="emailSignUpError" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="emailSignUpError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="email" class="form-control border-1 border-dark" id="sanBongNameSignUp"
                                     placeholder="Nhập tên sân bóng" />
-                                <span id="sanBongNameSignUpError" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="sanBongNameSignUpError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="password" class="form-control border-1 border-dark" id="passWordSignUp"
                                     placeholder="Nhập mật khẩu" />
-                                <span id="passWordSignUpError" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="passWordSignUpError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="password" class="form-control border-1 border-dark" id="passWordSignUp2"
                                     placeholder="Xác nhận mật khẩu" />
-                                <span id="passWordSignUp2Error" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="passWordSignUp2Error" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
                                 <select id="diaChiTinh" class="select2 form-select border-1 border-dark">
                                     <!-- code vao day -->
                                 </select>
-                                <span id="diaChiTinhError" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="diaChiTinhError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
                                 <select id="diaChiHuyen" class="select2 form-select border-1 border-dark">
                                     <!-- code vao day -->
                                 </select>
-                                <span id="diaChiHuyenError" class="text-danger error-Login" style="font-size: 0.875rem;"></span>
+                                <span id="diaChiHuyenError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
+                            </div>
+                            <div class="col-6 mt-3 mb-2">
+                                <select id="diaChiXa" class="select2 form-select border-1 border-dark">
+                                    <!-- code vao day -->
+                                </select>
+                                <span id="diaChiXaError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
+                            </div>
+                            <div class="col-6 mt-3 mb-2">
+                                <input type="text" class="form-control border-1 border-dark" id="diaChiCuThe"
+                                    placeholder="Địa chỉ sân cụ thể (tên đường, số nhà)*" />
+                                <span id="diaChiCuTheError" class="text-danger error-Login"
+                                    style="font-size: 0.875rem;"></span>
                             </div>
                         </div>
-                        <button class="btn w-100 text-light mt-4" onclick="checkDataSignUp()" style="background-color: rgb(20, 34, 56);">
+                        <button class="btn w-100 text-light mt-4" onclick="checkDataSignUp()"
+                            style="background-color: rgb(20, 34, 56);">
                             Đăng Ký
                         </button>
                         <div class="mt-3 text-center">
@@ -178,6 +203,210 @@
 
         </div>
     </section>
+
+    <!-- Tra cứu lịch sử đặt sân -->
+    <section id="traCuuDatSan" class="min-vh-100 d-flex text-center align-items-center" style="background-image: url('https://soccerplayer.net/wp-content/uploads/2021/11/pexels-photo-14815970.jpeg'); background-position: center;
+background-size: cover; margin-bottom: 0px; padding-top: 100px ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-light pb-3">TRA CỨU ĐẶT SÂN</h1>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="input-group mb-3" style="width: 600px;">
+                        <input id="SoDienThoaiTraCuu" type="text" class="form-control" placeholder="Nhập số điện thoại"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <a class="btn btn-primary text-center" onclick="validatePhoneNumber()" id="btnTraCuu"><i
+                                class="fa-solid fa-magnifying-glass pt-1"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- modal otp -->
+            <!-- <div class="modal fade" id="OTPTraCuu" tabindex="-1" aria-labelledby="Lichsu" aria-hidden="true"
+                onclick="clearOtpInputs()">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="border-radius: 20px;">
+                     
+                        <div class="modal-header d-flex justify-content-center">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                      
+                        <div class=" modal-body bg-body-tertiary d-block">
+                            <div class="row justify-content-center m-5">
+                                <div class="col-12 col-md-6 col-lg-4" style="min-width: 500px;">
+                                    <div class="card bg-white border-0"
+                                        style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02);">
+                                        <div class="card-body text-center">
+                                            <h4>Xác Nhận OTP</h4>
+                                            <p>Mã OTP sẽ được gửi qua số điện thoại của bạn</p>
+                                            <div class="otp-field mb-2">
+                                                <input type="number" maxlength="1" class="otp-input" />
+                                                <input type="number" maxlength="1" class="otp-input" />
+                                                <input type="number" maxlength="1" class="otp-input" />
+                                                <input type="number" maxlength="1" class="otp-input" />
+                                                <input type="number" maxlength="1" class="otp-input" />
+                                                <input type="number" maxlength="1" class="otp-input" />
+                                            </div>
+                                            <div id="otpError" class="text-danger pb-2"></div>
+                                            <a class="btn btn-warning text-light mb-3" onclick="checkOTPTraCuu()">
+                                                Xác
+                                                Nhận
+                                            </a>
+                                            <p class="resend text-muted mb-0">
+                                                Didn't receive code? <a href="" class="text-warning">
+                                                    Request
+                                                    again
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- modal hien thi lich su dat phong -->
+        <div class="modal fade" id="LichSuDatSan">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content" style="border-radius: 20px;">
+                    <!-- header -->
+                    <div class="modal-header d-flex justify-content-center">
+                        <div>
+                            <h5>Lịch Sử Đặt Sân</h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Cot tieu de -->
+                    <div class="modal-body">
+                        <div class="container" style="background: #fdf9c9;border-radius: 20px; font-weight: 600 ">
+                            <div class="row">
+                                <div class="col-2" style="padding: 15px 0 15px 15px;">Thời Gian Đặt</div>
+                                <div class="col-2" style="padding: 15px 0 15px 0;">Tên Người Đặt</div>
+                                <div class="col-2" style="padding: 15px 0 15px 0;">Tên Sân</div>
+                                <div class="col-1" style="padding: 15px 0 15px 0;">Thời Lượng</div>
+                                <div class="col-2" style="padding: 15px 0 15px 0;">Trạng Thái</div>
+                                <div class="col-2" style="padding: 15px 0 15px 0;">Tổng Thanh Toán</div>
+                                <div class="col-1" style="padding: 15px 0 15px 0;"> </div>
+
+                            </div>
+                        </div>
+                        <!-- Container header -->
+                        <div class="container mt-2 d-flex pt-2">
+                            <span style="font-weight: 700; font-size: 16px;">
+                                Thông tin
+                                đặt sân:
+                            </span>
+                        </div>
+                        <!-- Container body -->
+                        <!-- du lieu dat phong -->
+                        <div id="tblBodyLichSuDatPhong" class="mb-5">
+                            <div class="pt-2">
+                                <div class="container mt-2 shadow div-hover"
+                                    style="background:white;border-radius: 20px; font-weight: 600 ">
+                                    <div class="row">
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 10px 15px 15px;">
+                                            <span>
+                                                12h : 50p
+                                            </span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 10px 15px 0;">
+                                            <span>Bảo Anh</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 0 15px 0;">
+                                            <span>Sân An Khánh</span>
+                                        </div>
+                                        <div class="col-1 thongTinLichSuDaSan" style="padding: 15px 10px 15px 10px;">
+                                            <span>1.5 giờ</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDaSan" style="padding: 15px 10px 15px 0;">
+                                            <span>Đã xác nhận</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDaSan" style="padding: 15px 0 15px 0;">
+                                            <span><b>250.000</b></span>
+                                            <b>VND</b>
+                                        </div>
+                                        <div class="col-1 thongTinLichSuDatSan" style="padding: 15px 0 15px 15px;">
+                                            <button class="btn btn-danger btn-sm">Hủy</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <div class="container mt-2 shadow div-hover"
+                                    style="background:white;border-radius: 20px; font-weight: 600 ">
+                                    <div class="row">
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 10px 15px 15px;">
+                                            <span>
+                                                12h : 50p
+                                            </span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 10px 15px 0;">
+                                            <span>Bảo Anh</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 0 15px 0;">
+                                            <span>Sân An Khánh</span>
+                                        </div>
+                                        <div class="col-1 thongTinLichSuDaSan" style="padding: 15px 10px 15px 10px;">
+                                            <span>1.5 giờ</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDaSan" style="padding: 15px 10px 15px 0;">
+                                            <span>Đã xác nhận</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDaSan" style="padding: 15px 0 15px 0;">
+                                            <span><b>250.000</b></span>
+                                            <b>VND</b>
+                                        </div>
+                                        <div class="col-1 thongTinLichSuDatSan" style="padding: 15px 0 15px 15px;">
+                                            <button class="btn btn-danger btn-sm">Hủy</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <div class="container mt-2 shadow div-hover"
+                                    style="background:white;border-radius: 20px; font-weight: 600 ">
+                                    <div class="row">
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 10px 15px 15px;">
+                                            <span>
+                                                12h : 50p
+                                            </span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 10px 15px 0;">
+                                            <span>Bảo Anh</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDatSan" style="padding: 15px 0 15px 0;">
+                                            <span>Sân An Khánh</span>
+                                        </div>
+                                        <div class="col-1 thongTinLichSuDaSan" style="padding: 15px 10px 15px 10px;">
+                                            <span>1.5 giờ</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDaSan" style="padding: 15px 10px 15px 0;">
+                                            <span>Đã xác nhận</span>
+                                        </div>
+                                        <div class="col-2 thongTinLichSuDaSan" style="padding: 15px 0 15px 0;">
+                                            <span><b>250.000</b></span>
+                                            <b>VND</b>
+                                        </div>
+                                        <div class="col-1 thongTinLichSuDatSan" style="padding: 15px 0 15px 15px;">
+                                            <button class="btn btn-danger btn-sm">Hủy</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer class="bg-dark py-4">
@@ -243,11 +472,18 @@
     <!-- select2 de chon tinh, huyen -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
+    <!-- Thư viện thông báo đẹp -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
     <!-- js file -->
     <script src="js/main.js"></script>
     <script src="js/danhSachSanBong.js"></script>
     <script src="js/Login.js"></script>
     <script src="js/SignUp.js"></script>
+    <script src="js/traCuuDatSan.js"></script>
 
 
 </body>

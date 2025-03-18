@@ -8,7 +8,8 @@ function checkDataSignUp() {
     let confirmPassword = $("#passWordSignUp2").val().trim();
     let province  = $('#diaChiTinh').val().trim();
     let district = $('#diaChiHuyen').val().trim();
-    console.log(province);
+    let commune = $('#diaChiXa').val().trim();
+    let street = $('#diaChiCuThe').val().trim();
     let isValid = true;
 
     if(fullName === ''){
@@ -51,6 +52,16 @@ function checkDataSignUp() {
         $('#diaChiHuyen').addClass("input-error"); // Thêm class
         isValid = false;
     }
+    if(commune === ''){
+        $('#diaChiXaError').text("Bạn chưa chọn địa chỉ!");
+        $('#diaChiXa').addClass("input-error"); // Thêm class
+        isValid = false;
+    }
+    if(street === ''){
+        $('#diaChiCuTheError').text("Bạn chưa chọn địa chỉ!");
+        $('#diaChiCuThe').addClass("input-error"); // Thêm class
+        isValid = false;
+    }
     
     // Kiểm tra email hợp lệ
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -86,13 +97,13 @@ function checkDataSignUp() {
 
 //reset thông báo lỗi đăng ký
 function resetErrorSignUp() {
-    $("#fullNameSignUpError, #phoneSignUpError, #emailSignUpError, #sanBongNameSignUpError, #passWordSignUpError, #passWordSignUp2Error, #diaChiTinhError, #diaChiHuyenError").text('');
-    $("#fullNameSignUp, #phoneSignUp, #emailSignUp, #sanBongNameSignUp, #passWordSignUp, #passWordSignUp2, #diaChiTinh, #diaChiHuyen").removeClass("input-error");
+    $("#fullNameSignUpError, #phoneSignUpError, #emailSignUpError, #sanBongNameSignUpError, #passWordSignUpError, #passWordSignUp2Error, #diaChiTinhError, #diaChiHuyenError, #diaChiXaError, #diaChiCuTheError").text('');
+    $("#fullNameSignUp, #phoneSignUp, #emailSignUp, #sanBongNameSignUp, #passWordSignUp, #passWordSignUp2, #diaChiTinh, #diaChiHuyen, #diaChiXa, #diaChiCuThe").removeClass("input-error");
 }
 
 //reset thong tin đăng ký
 function resetDataSignUp() {
-    $("#fullNameSignUp, #phoneSignUp, #emailSignUp, #sanBongNameSignUp, #passWordSignUp, #passWordSignUp2, #diaChiTinh, #diaChiHuyen").val('');
+    $("#fullNameSignUp, #phoneSignUp, #emailSignUp, #sanBongNameSignUp, #passWordSignUp, #passWordSignUp2, #diaChiTinh, #diaChiHuyen, #diaChiXa, #diaChiCuThe").val('');
     resetErrorSignUp();
 }
 
@@ -105,7 +116,7 @@ function modalSignUp() {
 //Khi trang tải xong thì mới chạy
 $(document).ready(function () {
     //focus vào thì xóa thong báo lỗi
-    $("#fullNameSignUp, #phoneSignUp, #emailSignUp, #sanBongNameSignUp, #passWordSignUp, #passWordSignUp2, #diaChiTinh, #diaChiHuyen").on("focus", function () {
+    $("#fullNameSignUp, #phoneSignUp, #emailSignUp, #sanBongNameSignUp, #passWordSignUp, #passWordSignUp2, #diaChiTinh, #diaChiHuyen, #diaChiXa, #diaChiCuThe").on("focus", function () {
         $(this).removeClass("input-error");
         $("#" + this.id + "Error").text('');
     });
