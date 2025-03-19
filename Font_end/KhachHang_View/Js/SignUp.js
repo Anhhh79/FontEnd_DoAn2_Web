@@ -22,6 +22,8 @@ $(document).ready(function () {
 
     // Khi chọn tỉnh, lấy danh sách quận/huyện
     $("#diaChiTinh").change(function () {
+        $("#diaChiHuyen").empty().append('<option value="">-- Quận huyện --</option>');
+        $("#diaChiXa").empty().append('<option value="">-- Xã Phường --</option>');
         let provinceCode = $(this).val();
         if (provinceCode) {
             $.get(`https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`)
@@ -38,6 +40,7 @@ $(document).ready(function () {
 
     // Khi chọn quận/huyện, lấy danh sách xã/phường
     $("#diaChiHuyen").change(function () {
+        $("#diaChiXa").empty().append('<option value="">-- Xã Phường --</option>');
         let districtCode = $(this).val();
         if (districtCode) {
             $.get(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`)
