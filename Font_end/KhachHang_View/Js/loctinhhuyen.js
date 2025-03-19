@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     // Khi chọn tỉnh, lấy danh sách quận/huyện
     $("#diaChiTinhTimKiem").change(function () {
- 
+        $("#diaChiHuyenTimKiem").empty().append('<option value="">-- Quận huyện --</option>');
         let provinceCode = $(this).val();
         if (provinceCode) {
             $.get(`https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`)
