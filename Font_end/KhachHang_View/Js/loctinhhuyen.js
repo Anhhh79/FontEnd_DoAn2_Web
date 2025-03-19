@@ -1,54 +1,36 @@
-const districtsData = {
-    cantho: [
-        { value: "ninhkieu", text: "Ninh Kiều" },
-        { value: "binhthuy", text: "Bình Thủy" },
-        { value: "omonk", text: "Ô Môn" }
-    ],
-    hanoi: [
-        { value: "badinh", text: "Ba Đình" },
-        { value: "hoankiem", text: "Hoàn Kiếm" },
-        { value: "dongda", text: "Đống Đa" }
-    ],
-    hcm: [
-        { value: "quan1", text: "Quận 1" },
-        { value: "quan2", text: "Quận 2" },
-        { value: "quan3", text: "Quận 3" }
-    ]
-};
-
-document.getElementById("province").addEventListener("change", function () {
-    const selectedProvince = this.value;
-    const districtSelect = document.getElementById("district");
-
-    districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
-
-    if (districtsData[selectedProvince]) {
-        districtsData[selectedProvince].forEach(district => {
-            let option = document.createElement("option");
-            option.value = district.value;
-            option.textContent = district.text;
-            districtSelect.appendChild(option);
+$(document).ready(function () {
+    $("#diaChiTinhTimKiem", "#diaChiHuyenTimKiem").select2(); // Kích hoạt Select2
+    // Lấy danh sách tỉnh/thành
+    $.get("https://provinces.open-api.vn/api/?depth=1")
+        .done(function (data) {
+            let object = '<option value="">-- Tỉnh Thành --</option>';  // Khởi tạo chuỗi rỗng để lưu các <option>
+            $("#diaChiHuyenTimKiem").empty().append('<option value="">-- Quận Huyện --</option>');
+            $.each(data, function (index, province) { // Sử dụng (index, province) thay vì (item)
+                object += `
+                <option value="${province.code}">${province.name}</option>
+            `;
+            });
+            $('#diaChiTinhTimKiem').html(object); // Gán danh sách tỉnh vào <select>
+        })
+        .fail(function () {
+            console.error("Không thể tải danh sách tỉnh thành");
         });
-    }
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const textElement = document.querySelector(".search-text");
-    const text = "Tìm sân thể thao";
-    let index = 0;
 
-    function typeEffect() {
-        if (index < text.length) {
-            textElement.textContent += text.charAt(index);
-            index++;
-            setTimeout(typeEffect, 200); // Hiển thị từng ký tự mỗi 200ms
-        } else {
-            setTimeout(() => {
-                textElement.textContent = "";
-                index = 0;
-                typeEffect(); // Lặp lại hiệu ứng
-            }, 2000); // Đợi 2 giây trước khi chạy lại từ đầu
+    // Khi chọn tỉnh, lấy danh sách quận/huyện
+    $("#diaChiTinhTimKiem").change(function () {
+ 
+        let provinceCode = $(this).val();
+        if (provinceCode) {
+            $.get(`https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`)
+                .done(function (data) {
+                    $("#diaChiHuyenTimKiem").append(data.districts.map(district =>
+                        `<option value="${district.code}">${district.name}</option>`
+                    ));
+                })
+                .fail(function () {
+                    console.error("Không thể tải danh sách quận huyện");
+                });
         }
-    }
-
-    typeEffect(); // Bắt đầu hiệu ứng
+    });
 });
+
