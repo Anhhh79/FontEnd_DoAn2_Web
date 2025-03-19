@@ -151,6 +151,12 @@ function checkDataSignUp() {
         isValid = false;
     }
 
+    if(!isValid){
+        toastr.warning("Bạn chưa nhập thông tin!", "", { 
+            timeOut: 1000 // Giới hạn thời gian hiển thị là 1 giây
+        });
+    }
+
     return isValid;
 }
 
