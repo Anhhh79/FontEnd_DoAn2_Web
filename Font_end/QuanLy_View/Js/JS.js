@@ -39,7 +39,10 @@ function showSweetAlert() {
         title: 'Thành công!',
         text: 'Dữ liệu đã được lưu.',
         icon: 'success', // success, error, warning, info, question
-        confirmButtonText: 'OK'
+        confirmButtonText: 'OK',
+        customClass: {
+            popup: 'custom-swal'
+        }
     });
 }
 

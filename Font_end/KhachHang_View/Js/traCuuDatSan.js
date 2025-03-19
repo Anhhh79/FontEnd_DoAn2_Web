@@ -16,7 +16,10 @@ function validatePhoneNumber() {
             title: "Lỗi nhập số điện thoại",
             text: "Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại bắt đầu bằng 0 và có 10-11 chữ số.",
             confirmButtonText: "OK",
-            timer: 2000
+            timer: 2000,
+            customClass: {
+                popup: 'custom-swal'
+            }
         });
         clearPhoneNumber();
         return false;

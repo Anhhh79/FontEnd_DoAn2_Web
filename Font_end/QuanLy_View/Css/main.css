@@ -212,3 +212,6 @@ input[type=number] {
 .bg-img{
     background-color: white;
 }
+.custom-swal {
+    border-radius: 30px !important; /* Điều chỉnh độ bo tròn */
+}

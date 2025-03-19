@@ -54,7 +54,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <div class="search-box mx-3">
-                    <input class="form-control" type="text" placeholder=" ">
+                    <input class="form-control" style="font-size: larger;" type="text" placeholder=" ">
                     <div class="search-text"></div>
                     <i class="bi bi-search search-icon"></i>
                 </div>
@@ -62,7 +62,16 @@
             <div class="d-flex align-items-center gap-3">
                 <div class="icon-box d-none d-md-block"><i class="bi bi-dribbble"></i><span>Sân thể thao</span></div>
                 <div class="icon-box d-none d-md-block"><i class="bi bi-people-fill"></i><span>Đội thể thao</span></div>
-                <div class="icon-box d-none d-md-block"><i class="bi bi-person-fill"></i><span>Tài khoản</span></div>
+                <div class="dropdown d-none d-md-block">
+                    <div class="icon-box dropdown-toggle" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                        <span>Tài khoản</span>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="accountDropdown" style="border-radius: 10px;">
+                        <li><a class="dropdown-item" onclick="modalLogin()">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" onclick="modalSignUp()">Đăng ký</a></li>
+                    </ul>
+                </div>                
                 <div class="icon-box d-none d-md-block"><i class="bi bi-facebook"></i><span>Facebook</span></div>
                 <div class="icon-box d-none d-md-block"><i class="bi bi-youtube"></i><span>Youtube</span></div>
             </div>
@@ -73,12 +82,12 @@
 
     <!-- Thanh tìm kiếm -->
     <!-- Thanh tìm kiếm -->
-    <div class="container">
+    <div class="mx-5">
         <div class="search-container">
-            <form class="p-3 bg-white rounded shadow-sm">
-                <div class="row g-2 px-2">
+            <form class="py-4 bg-white rounded shadow-sm">
+                <div class="row g-2 px-4">
                     <div class="col-md-4">
-                        <select id="province" class="form-select">
+                        <select id="province" class="form-select" style="font-size: large;border-radius: 10px;">
                             <option value="">Chọn Tỉnh</option>
                             <option value="hanoi">Hà Nội</option>
                             <option value="hcm">TP. Hồ Chí Minh</option>
@@ -87,20 +96,20 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select id="district" class="form-select">
+                        <select id="district" class="form-select" style="font-size: large;border-radius: 10px;">
                             <option value="">Chọn Huyện</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <select id="fieldType" class="form-select">
+                        <select id="fieldType" class="form-select" style="font-size: large;border-radius: 10px;">
                             <option value="">Loại sân</option>
                             <option value="5">Sân 5</option>
                             <option value="7">Sân 7</option>
                         </select>
                     </div>
                     <div class="col-md-2 d-flex">
-                        <button class="btn btn-dark w-100">Tìm sân</button>
-                        <button class="btn btn-outline-dark ms-2">
+                        <button class="btn btn-dark w-100" style="border-radius: 10px;">Tìm sân</button>
+                        <button class="btn btn-outline-dark ms-2" style="border-radius: 10px;">
                             <i class="bi bi-arrow-clockwise"></i>
                         </button>
                     </div>
@@ -108,7 +117,7 @@
             </form>
         </div>
     </div>
-    <div class="container my-4">
+    <div class="mx-5 my-4">
         <div class="row g-3">
             <!-- Banner 1 -->
             <div class="col-md-6">
@@ -134,19 +143,10 @@
         </div>
     </div>
 
-
-
-
-
-    <!-- Button mở Modal -->
-    <button type="button" id="btnShow" class="btn btn-primary" onclick="modalSignUp()">
-        Đăng Ký
-    </button>
-
     <!-- Modal đăng nhập -->
     <div class="modal fade" id="modalDangNhap" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px;">
                 <div class="modal-body">
                     <div class="text-end">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -158,18 +158,18 @@
                     <div class="p-3">
                         <div class="mt-3" id="boxDangNhap">
                             <input type="text" class="form-control border-1 border-dark" id="taiKhoanDangNhap"
-                                placeholder="Nhập tài khoản" />
+                                placeholder="Nhập tài khoản" style="border-radius: 10px; font-size: large;" />
                             <span id="taiKhoanDangNhapError" class="text-danger error-Login"
                                 style="font-size: 0.875rem;"></span>
                         </div>
                         <div class="mt-3">
                             <input type="password" class="form-control border-1 border-dark" id="matKhauDangNhap"
-                                placeholder="Nhập mật khẩu" />
+                                placeholder="Nhập mật khẩu" style="border-radius: 10px; font-size: large;" />
                             <span id="matKhauDangNhapError" class="text-danger error-Login"
                                 style="font-size: 0.875rem;"></span>
                         </div>
                         <button class="btn w-100 text-light mt-4" onclick="checkDataLogin()"
-                            style="background-color: rgb(20, 34, 56);">
+                            style="background-color: rgb(20, 34, 56); border-radius: 10px;">
                             Đăng Nhập
                         </button>
                         <div class=" text-center mt-3">
@@ -185,7 +185,7 @@
     <!-- Modal đăng ký -->
     <div class="modal fade" id="modalDangKy" tabindex="-1">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px;" >
                 <div class="modal-body">
                     <div class="text-end">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -198,56 +198,56 @@
                         <div class="row">
                             <div class="col-6 mt-3">
                                 <input type="text" class="form-control border-1 border-dark" id="fullNameSignUp"
-                                    placeholder="Nhập họ và tên" />
+                                    placeholder="Nhập họ và tên" style="border-radius: 10px;" />
                                 <span id="fullNameSignUpError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="text" class="form-control border-1 border-dark" id="phoneSignUp"
-                                    placeholder="Nhập số điện thoại" />
+                                    placeholder="Nhập số điện thoại" style="border-radius: 10px;" />
                                 <span id="phoneSignUpError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="email" class="form-control border-1 border-dark" id="emailSignUp"
-                                    placeholder="Nhập Email" />
+                                    placeholder="Nhập Email" style="border-radius: 10px;" />
                                 <span id="emailSignUpError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="email" class="form-control border-1 border-dark" id="sanBongNameSignUp"
-                                    placeholder="Nhập tên sân bóng" />
+                                    placeholder="Nhập tên sân bóng" style="border-radius: 10px;" />
                                 <span id="sanBongNameSignUpError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="password" class="form-control border-1 border-dark" id="passWordSignUp"
-                                    placeholder="Nhập mật khẩu" />
+                                    placeholder="Nhập mật khẩu" style="border-radius: 10px;" />
                                 <span id="passWordSignUpError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3">
                                 <input type="password" class="form-control border-1 border-dark" id="passWordSignUp2"
-                                    placeholder="Xác nhận mật khẩu" />
+                                    placeholder="Xác nhận mật khẩu" style="border-radius: 10px;" />
                                 <span id="passWordSignUp2Error" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
-                                <select id="diaChiTinh" class="select2 form-select border-1 border-dark">
+                                <select id="diaChiTinh" class="select2 form-select border-1 border-dark" style="border-radius: 10px;">
                                     <!-- code vao day -->
                                 </select>
                                 <span id="diaChiTinhError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
-                                <select id="diaChiHuyen" class="select2 form-select border-1 border-dark">
+                                <select id="diaChiHuyen" class="select2 form-select border-1 border-dark" style="border-radius: 10px;">
                                     <!-- code vao day -->
                                 </select>
                                 <span id="diaChiHuyenError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
-                                <select id="diaChiXa" class="select2 form-select border-1 border-dark">
+                                <select id="diaChiXa" class="select2 form-select border-1 border-dark" style="border-radius: 10px;">
                                     <!-- code vao day -->
                                 </select>
                                 <span id="diaChiXaError" class="text-danger error-Login"
@@ -255,13 +255,13 @@
                             </div>
                             <div class="col-6 mt-3 mb-2">
                                 <input type="text" class="form-control border-1 border-dark" id="diaChiCuThe"
-                                    placeholder="Địa chỉ sân cụ thể (tên đường, số nhà)*" />
+                                    placeholder="Địa chỉ sân cụ thể (tên đường, số nhà)*" style="border-radius: 10px;" />
                                 <span id="diaChiCuTheError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                         </div>
                         <button class="btn w-100 text-light mt-4" onclick="checkDataSignUp()"
-                            style="background-color: rgb(20, 34, 56);">
+                            style="background-color: rgb(20, 34, 56); border-radius: 10px;">
                             Đăng Ký
                         </button>
                         <div class="mt-3 text-center">
