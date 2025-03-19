@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let input = document.getElementById(inputId);
         let errorSpan = document.getElementById(errorId);
 
+        if (!input || !errorSpan) {
+            console.error(`Không tìm thấy phần tử với ID: ${inputId} hoặc ${errorId}`);
+            return () => false;
+        }
+
         function checkValidation() {
             if (regex.test(input.value.trim())) {
                 errorSpan.textContent = ""; // Ẩn lỗi nếu đúng
@@ -19,11 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let checkHoten = validateInput("hoten", "error-hoten", /^[a-zA-ZÀ-ỹ\s]+$/, "Họ và tên không được chứa số hoặc ký tự đặc biệt!");
-    let checkEmail = validateInput("email", "error-email", /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email không hợp lệ.");
     let checkSdt = validateInput("sdt", "error-sdt", /^0\d{9}$/, "Số điện thoại phải có 10 số và bắt đầu bằng 0.");
 
     let ngayNhanInput = document.getElementById("myID");
     let errorNgayNhan = document.getElementById("error-ngaynhan");
+
+    if (!ngayNhanInput || !errorNgayNhan) {
+        console.error("Không tìm thấy phần tử myID hoặc error-ngaynhan.");
+        return;
+    }
 
     function checkNgayNhan() {
         if (ngayNhanInput.value) {
@@ -37,24 +46,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ngayNhanInput.addEventListener("input", checkNgayNhan);
 
-    document.getElementById("btnDatSan").addEventListener("click", function () {
-        let isValid = checkHoten() & checkEmail() & checkSdt() & checkNgayNhan();
+    let btnDatSan = document.getElementById("btnDatSan");
+    if (!btnDatSan) {
+        console.error("Không tìm thấy nút btnDatSan.");
+        return;
+    }
+
+    btnDatSan.addEventListener("click", function () {
+        let isValid = checkHoten() & checkSdt() & checkNgayNhan();
 
         if (isValid) {
             showSweetAlert();
 
             document.getElementById("hoten").value = "";
-            document.getElementById("email").value = "";
             document.getElementById("sdt").value = "";
             ngayNhanInput.value = "";
 
             document.getElementById("error-hoten").textContent = "";
-            document.getElementById("error-email").textContent = "";
             document.getElementById("error-sdt").textContent = "";
             document.getElementById("error-ngaynhan").textContent = "";
         }
     });
 });
+
+
 
 // kết thúc kiểm tra
 document.addEventListener("DOMContentLoaded", function () {
@@ -83,24 +98,52 @@ document.addEventListener("DOMContentLoaded", function () {
     timeSelect.addEventListener("change", updateSelection);
     updateSelection(); // Chạy ngay khi tải trang để cập nhật trạng thái ban đầu
 });
+
+
 document.addEventListener("DOMContentLoaded", function () {
-    const textElement = document.querySelector(".search-text");
-    const text = "Tìm sân thể thao";
+    const searchInput = document.getElementById("timkiem"); // Ô input
+    const text = "Tìm sân thể thao"; // Văn bản hiệu ứng
     let index = 0;
+    let typingTimeout;
+    let isTyping = true; // Kiểm soát trạng thái hiệu ứng
 
     function typeEffect() {
+        if (!isTyping) return; // Nếu đang nhập liệu, dừng hiệu ứng
+
         if (index < text.length) {
-            textElement.textContent += text.charAt(index);
+            searchInput.setAttribute("placeholder", text.substring(0, index + 1)); // Hiển thị từng ký tự
             index++;
-            setTimeout(typeEffect, 200); // Hiển thị từng ký tự mỗi 200ms
+            typingTimeout = setTimeout(typeEffect, 200);
         } else {
             setTimeout(() => {
-                textElement.textContent = "";
+                searchInput.setAttribute("placeholder", ""); // Xóa văn bản sau 2s
                 index = 0;
                 typeEffect(); // Lặp lại hiệu ứng
-            }, 2000); // Đợi 2 giây trước khi chạy lại từ đầu
+            }, 2000);
         }
     }
 
-    typeEffect(); // Bắt đầu hiệu ứng
+    function startTypingEffect() {
+        isTyping = true;
+        index = 0;
+        typeEffect();
+    }
+
+    function stopTypingEffect() {
+        isTyping = false;
+        clearTimeout(typingTimeout);
+        searchInput.setAttribute("placeholder", ""); // Xóa placeholder khi nhập dữ liệu
+    }
+
+    // Bắt đầu hiệu ứng khi tải trang
+    startTypingEffect();
+
+    // Lắng nghe sự kiện nhập vào ô tìm kiếm
+    searchInput.addEventListener("input", function () {
+        if (this.value.trim() !== "") {
+            stopTypingEffect();
+        } else {
+            startTypingEffect(); // Khi xóa hết nội dung, chạy lại hiệu ứng
+        }
+    });
 });

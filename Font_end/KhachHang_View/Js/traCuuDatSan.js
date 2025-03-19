@@ -3,7 +3,10 @@ function validatePhoneNumber() {
     // Kiểm tra nếu số điện thoại chưa được nhập
     const phoneNumber = document.getElementById("SoDienThoaiTraCuu").value.trim();
     if (!phoneNumber) {
-        toastr.warning("Bạn chưa nhập số điện thoại!")
+        toastr.warning("Bạn chưa nhập số điện thoại!", "", { 
+            timeOut: 1000 // Giới hạn thời gian hiển thị là 1 giây
+        });
+        
         return false;
     }
 

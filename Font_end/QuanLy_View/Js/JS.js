@@ -102,6 +102,13 @@ function KiemTraLoi() {
         loaiSan.value = "";
         imageInput.value = "";
     }
+    else {
+
+        toastr.warning("Bạn chưa nhập số điện thoại!", "", { 
+            timeOut: 1000 // Giới hạn thời gian hiển thị là 1 giây
+        });
+
+    }
 }
 
 function KiemTraLoiSua() {
@@ -158,6 +165,11 @@ function KiemTraLoiSua() {
         loaiSan.value = "";
         imageInput.value = "";
     }
+    else {
+        toastr.warning("Bạn chưa nhập số điện thoại!", "", { 
+            timeOut: 1000 // Giới hạn thời gian hiển thị là 1 giây
+        }); 
+    }
 }
 
 function HienThiThongBaoXoa() {
@@ -177,6 +189,62 @@ function HienThiThongBaoXoa() {
         }
     });
 }
+
+function KiemTraLoiDatSan() {
+    let isValid = true;
+
+    // Lấy giá trị từ các input
+    let hoTen = document.getElementById("hovatenDatSan");
+    let soDienThoai = document.getElementById("SoDienThoaiDatSan");
+    let ngayDat = document.getElementById("NgayDatSan");
+    let gioDat = document.getElementById("GioDatSan");
+    let thoiLuong = document.getElementById("ThoiLuongDatSan");
+
+    let errorHoTen = document.getElementById("hovatenDatSanError");
+    let errorSoDienThoai = document.getElementById("SoDienThoaiDatSanError");
+    let errorNgayDat = document.getElementById("NgayDatSanError");
+    let errorGioDat = document.getElementById("GioDatSanError");
+    let errorThoiLuong = document.getElementById("ThoiLuongDatSanError");
+
+    // Xóa thông báo lỗi trước khi kiểm tra
+    errorHoTen.textContent = "";
+    errorSoDienThoai.textContent = "";
+    errorNgayDat.textContent = "";
+    errorGioDat.textContent = "";
+    errorThoiLuong.textContent = "";
+
+    // Kiểm tra họ tên
+    if (hoTen.value.trim() === "") {
+        errorHoTen.textContent = "Vui lòng nhập họ tên.";
+        isValid = false;
+    }
+
+    // Kiểm tra số điện thoại (phải là 10 số)
+    let phoneRegex = /^[0-9]{10}$/;
+    if (soDienThoai.value.trim() === "") {
+        errorSoDienThoai.textContent = "Vui lòng nhập số điện thoại.";
+        isValid = false;
+    } else if (!phoneRegex.test(soDienThoai.value)) {
+        errorSoDienThoai.textContent = "Số điện thoại không hợp lệ.";
+        isValid = false;
+    }
+    // Nếu hợp lệ thì hiển thị thông báo và xóa dữ liệu
+    if (isValid) {
+        showSweetAlert();
+
+        // Xóa dữ liệu sau khi nhập thành công
+        hoTen.value = "";
+        soDienThoai.value = "";
+        ngayDat.value = "";
+        gioDat.value = "";
+        thoiLuong.value = "";
+    } else {
+        toastr.warning("Vui lòng kiểm tra lại thông tin!", "", { 
+            timeOut: 1000 // Giới hạn thời gian hiển thị là 1 giây
+        }); 
+    }
+}
+
 
 
 

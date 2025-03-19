@@ -163,3 +163,11 @@ white-space: nowrap;
 .dropdown-toggle::after {
     display: none !important;
 }
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color:black;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(231, 238, 249, 0.25);
+}

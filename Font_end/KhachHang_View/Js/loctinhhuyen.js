@@ -31,24 +31,52 @@ document.getElementById("province").addEventListener("change", function () {
         });
     }
 });
+
 document.addEventListener("DOMContentLoaded", function () {
-    const textElement = document.querySelector(".search-text");
-    const text = "Tìm sân thể thao";
+    const searchInput = document.getElementById("timkiem"); // Ô input
+    const text = "Tìm sân thể thao"; // Văn bản hiệu ứng
     let index = 0;
+    let typingTimeout;
+    let isTyping = true; // Kiểm soát trạng thái hiệu ứng
 
     function typeEffect() {
+        if (!isTyping) return; // Nếu đang nhập liệu, dừng hiệu ứng
+
         if (index < text.length) {
-            textElement.textContent += text.charAt(index);
+            searchInput.setAttribute("placeholder", text.substring(0, index + 1)); // Hiển thị từng ký tự
             index++;
-            setTimeout(typeEffect, 200); // Hiển thị từng ký tự mỗi 200ms
+            typingTimeout = setTimeout(typeEffect, 200);
         } else {
             setTimeout(() => {
-                textElement.textContent = "";
+                searchInput.setAttribute("placeholder", ""); // Xóa văn bản sau 2s
                 index = 0;
                 typeEffect(); // Lặp lại hiệu ứng
-            }, 2000); // Đợi 2 giây trước khi chạy lại từ đầu
+            }, 2000);
         }
     }
 
-    typeEffect(); // Bắt đầu hiệu ứng
+    function startTypingEffect() {
+        isTyping = true;
+        index = 0;
+        typeEffect();
+    }
+
+    function stopTypingEffect() {
+        isTyping = false;
+        clearTimeout(typingTimeout);
+        searchInput.setAttribute("placeholder", ""); // Xóa placeholder khi nhập dữ liệu
+    }
+
+    // Bắt đầu hiệu ứng khi tải trang
+    startTypingEffect();
+
+    // Lắng nghe sự kiện nhập vào ô tìm kiếm
+    searchInput.addEventListener("input", function () {
+        if (this.value.trim() !== "") {
+            stopTypingEffect();
+        } else {
+            startTypingEffect(); // Khi xóa hết nội dung, chạy lại hiệu ứng
+        }
+    });
 });
+
