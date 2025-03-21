@@ -43,7 +43,7 @@
 
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg fixed-top px-2">
+    <!-- <nav class="navbar navbar-expand-lg fixed-top px-2">
         <div class="container">
             <a class="navbar-brand py-3" href="#">
                 <img src="https://img.thegioithethao.vn/media/logo/logo.svg" alt="Sport World">
@@ -77,20 +77,82 @@
             </div>
 
         </div>
+    </nav> -->
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top px-2 bg-light">
+        <div class="container">
+            <a class="navbar-brand py-3" href="#">
+                <img src="https://img.thegioithethao.vn/media/logo/logo.svg" alt="Sport World">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="search-box mx-3 w-100">
+                    <input class="form-control" id="timkiem" style="font-size: larger;" type="text"
+                        placeholder="Tìm kiếm...">
+                    <div class="search-text"></div>
+                    <i class="bi bi-search search-icon"></i>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 d-none d-lg-flex">
+                <div class="icon-box"><i class="bi bi-dribbble"></i><span>Sân thể thao</span></div>
+                <div class="icon-box"><i class="bi bi-people-fill"></i><span>Đội thể thao</span></div>
+                <div class="dropdown">
+                    <div class="icon-box dropdown-toggle" id="accountDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                        <span>Tài khoản</span>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="accountDropdown" style="border-radius: 10px;">
+                        <li><a class="dropdown-item" onclick="modalLogin()">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" onclick="modalSignUp()">Đăng ký</a></li>
+                    </ul>
+                </div>
+                <div class="icon-box"><i class="bi bi-facebook"></i><span>Facebook</span></div>
+                <div class="icon-box"><i class="bi bi-youtube"></i><span>Youtube</span></div>
+            </div>
+
+            <!-- Dropdown cho mobile -->
+            <div class="d-lg-none">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="mobileDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-dribbble"></i> Sân thể thao</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-people-fill"></i> Đội thể thao</a></li>
+                        <li><a class="dropdown-item" onclick="modalLogin()"><i class="bi bi-person-fill"></i> Đăng
+                                nhập</a></li>
+                        <li><a class="dropdown-item" onclick="modalSignUp()"><i class="bi bi-person-plus-fill"></i> Đăng
+                                ký</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-youtube"></i> Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </nav>
     <!-- Thanh tìm kiếm -->
-    <div class="mx-5 mt-5" style="box-shadow: 0px 0px 15px 10px rgba(113, 111, 111, 0.1) !important; border-radius: 30px;">
+    <div class="mx-5 mt-5"
+        style="box-shadow: 0px 0px 15px 10px rgba(113, 111, 111, 0.1) !important; border-radius: 30px;">
         <div class="search-container">
             <form class="py-4 bg-white rounded shadow-sm">
                 <div class="row g-2 px-4">
                     <div class="col-md-4">
-                        <select id="diaChiTinhTimKiem" class="form-select" style="font-size: large;border-radius: 10px;">
+                        <select id="diaChiTinhTimKiem" class="form-select"
+                            style="font-size: large;border-radius: 10px;">
                             <!-- code js vao day -->
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select id="diaChiHuyenTimKiem" class="form-select" style="font-size: large;border-radius: 10px;">
-                             <!-- code js vao day -->
+                        <select id="diaChiHuyenTimKiem" class="form-select"
+                            style="font-size: large;border-radius: 10px;">
+                            <!-- code js vao day -->
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -179,7 +241,7 @@
     <!-- Modal đăng ký -->
     <div class="modal fade" id="modalDangKy" tabindex="-1">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="border-radius: 10px;" >
+            <div class="modal-content" style="border-radius: 10px;">
                 <div class="modal-body">
                     <div class="text-end">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -227,21 +289,24 @@
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
-                                <select id="diaChiTinh" class="select2 form-select border-1 border-dark" style="border-radius: 10px;">
+                                <select id="diaChiTinh" class="select2 form-select border-1 border-dark"
+                                    style="border-radius: 10px;">
                                     <!-- code vao day -->
                                 </select>
                                 <span id="diaChiTinhError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
-                                <select id="diaChiHuyen" class="select2 form-select border-1 border-dark" style="border-radius: 10px;">
+                                <select id="diaChiHuyen" class="select2 form-select border-1 border-dark"
+                                    style="border-radius: 10px;">
                                     <!-- code vao day -->
                                 </select>
                                 <span id="diaChiHuyenError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
                             <div class="col-6 mt-3 mb-2">
-                                <select id="diaChiXa" class="select2 form-select border-1 border-dark" style="border-radius: 10px;">
+                                <select id="diaChiXa" class="select2 form-select border-1 border-dark"
+                                    style="border-radius: 10px;">
                                     <!-- code vao day -->
                                 </select>
                                 <span id="diaChiXaError" class="text-danger error-Login"
@@ -249,7 +314,8 @@
                             </div>
                             <div class="col-6 mt-3 mb-2">
                                 <input type="text" class="form-control border-1 border-dark" id="diaChiCuThe"
-                                    placeholder="Địa chỉ sân cụ thể (tên đường, số nhà)*" style="border-radius: 10px;" />
+                                    placeholder="Địa chỉ sân cụ thể (tên đường, số nhà)*"
+                                    style="border-radius: 10px;" />
                                 <span id="diaChiCuTheError" class="text-danger error-Login"
                                     style="font-size: 0.875rem;"></span>
                             </div>
@@ -305,7 +371,8 @@ background-size: cover; margin-bottom: 0px; padding-top: 100px ">
                     <div class="input-group mb-3" style="width: 600px;">
                         <input id="SoDienThoaiTraCuu" type="text" class="form-control" placeholder="Nhập số điện thoại"
                             aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <a class="btn btn-primary text-center" onclick="validatePhoneNumber()" id="btnTraCuu" style="background-color: #0e2238;border-color: #0e2238;"><i
+                        <a class="btn btn-primary text-center" onclick="validatePhoneNumber()" id="btnTraCuu"
+                            style="background-color: #0e2238;border-color: #0e2238;"><i
                                 class="fa-solid fa-magnifying-glass pt-1"></i></a>
                     </div>
                 </div>
