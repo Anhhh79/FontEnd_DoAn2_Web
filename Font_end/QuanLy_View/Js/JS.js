@@ -55,18 +55,15 @@ function KiemTraLoi() {
     let tenSan = document.getElementById("tenSan");
     let gia = document.getElementById("gia");
     let loaiSan = document.getElementById("LoaiSan");
-    let imageInput = document.getElementById("imageInput");
 
     let errortenSan = document.getElementById("errortenSan");
     let errorGia = document.getElementById("errorGia");
     let errorLoaiSan = document.getElementById("ErrorLoaiSan");
-    let errorImage = document.getElementById("errorImage");
 
     // Xóa thông báo lỗi trước khi kiểm tra
     errortenSan.textContent = "";
     errorGia.textContent = "";
     errorLoaiSan.textContent = "";
-    errorImage.textContent = "";
 
     // Kiểm tra tên sân
     if (tenSan.value.trim() === "") {
@@ -86,12 +83,6 @@ function KiemTraLoi() {
         isValid = false;
     }
 
-    // Kiểm tra ảnh
-    if (imageInput.files.length === 0) {
-        errorImage.textContent = "Vui lòng chọn ảnh.";
-        isValid = false;
-    }
-
     // Nếu hợp lệ thì gọi hàm showSweetAlert() và reset dữ liệu
     if (isValid) {
         showSweetAlert();
@@ -100,11 +91,10 @@ function KiemTraLoi() {
         tenSan.value = "";
         gia.value = "";
         loaiSan.value = "";
-        imageInput.value = "";
     }
     else {
 
-        toastr.warning("Bạn chưa nhập số điện thoại!", "", { 
+        toastr.warning("Bạn chưa nhập thông tin!", "", { 
             timeOut: 1000 // Giới hạn thời gian hiển thị là 1 giây
         });
 
@@ -118,18 +108,15 @@ function KiemTraLoiSua() {
     let tenSan = document.getElementById("EdittenSan");
     let gia = document.getElementById("Editgia");
     let loaiSan = document.getElementById("EditloaiSan");
-    let imageInput = document.getElementById("EditimageInput");
 
     let errortenSan = document.getElementById("EditerrorTenSan");
     let errorGia = document.getElementById("EditerrorGia");
     let errorLoaiSan = document.getElementById("EditErrorLoaiSan");
-    let errorImage = document.getElementById("EditerrorImage");
 
     // Xóa thông báo lỗi trước khi kiểm tra
     errortenSan.textContent = "";
     errorGia.textContent = "";
     errorLoaiSan.textContent = "";
-    errorImage.textContent = "";
 
     // Kiểm tra tên sân
     if (tenSan.value.trim() === "") {
@@ -149,11 +136,6 @@ function KiemTraLoiSua() {
         isValid = false;
     }
 
-    // Kiểm tra ảnh (Chỉ bắt lỗi nếu chưa có ảnh nào)
-    if (imageInput.files.length === 0) {
-        errorImage.textContent = "Vui lòng chọn ảnh.";
-        isValid = false;
-    }
 
     // Nếu hợp lệ thì gọi hàm showSweetAlert() và đóng modal
     if (isValid) {
@@ -163,7 +145,6 @@ function KiemTraLoiSua() {
         tenSan.value = "";
         gia.value = "";
         loaiSan.value = "";
-        imageInput.value = "";
     }
     else {
         toastr.warning("Bạn chưa nhập số điện thoại!", "", { 
