@@ -22,6 +22,9 @@ function checkDataLogin() {
         });
     }
 
+    if(isValid){
+        window.location.href = "/Font_end/QuanLy_View/index.html";
+    }
     return isValid;
 }
 
